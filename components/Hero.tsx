@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { cursor, useTypewriter } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 
 function Hero() {
   const [Lines, count] = useTypewriter({

@@ -1,19 +1,13 @@
 import axios from "axios";
-import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
 import { useRef, useState } from "react";
-import { SocialIcon } from "react-social-icons";
-import { cursor, useTypewriter } from "react-simple-typewriter";
 
 function Download() {
-  const inputUrlRef = useRef();
+  const inputUrlRef: any = useRef();
   const [isLoading, setLoading] = useState(false);
   const [urlResult, setUrlResult] = useState("");
   const [musicResult, setMusicResult] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     setLoading(true);
     event.preventDefault();
     const _data = await axios.get("/api/search?q=" + inputUrlRef.current.value);

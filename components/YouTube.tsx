@@ -5,15 +5,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { SocialIcon } from "react-social-icons";
-import { cursor, useTypewriter } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 
 function YouTube() {
-  const inputUrlRef = useRef();
+  const inputUrlRef: any = useRef();
   const [isLoading, setLoading] = useState(false);
   const [urlResult, setUrlResult] = useState("");
   const [musicResult, setMusicResult] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     setLoading(true);
     event.preventDefault();
     const _data = await axios.get("/api/search?q=" + inputUrlRef.current.value);
@@ -32,10 +32,10 @@ function YouTube() {
 
   return (
     <section className="h-screen items-center w-full px-5 py-12 justify-center flex bg-[#1c1b1b]">
-      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div class="grid gap-10 lg:grid-cols-2">
-          <div class="lg:pr-10">
-            <h5 class="mb-4 text-2xl font-semibold italic leading-none">
+      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div className="lg:pr-10">
+            <h5 className="mb-4 text-2xl font-semibold italic leading-none">
               <motion.div
                 initial={{ x: 200, opacity: 0, scale: 1 }}
                 animate={{ x: 0, opacity: 1, scale: 1 }}
@@ -47,7 +47,7 @@ function YouTube() {
               </motion.div>
               Downloader Section
             </h5>
-            <p class="mb-6 text-gray-900">
+            <p className="mb-6 text-gray-900">
               <p className="pt-10 pb-10 max-w-xl mx-auto text-base tracking-wider leading-relaxed text-gray-500 italic">
                 YouTube is a global online video sharing and social media
                 platform headquartered in San Bruno, California. It was launched
@@ -56,7 +56,7 @@ function YouTube() {
                 website, after Google Search.
               </p>
             </p>
-            <hr class="border-yellow-400" />
+            <hr className="border-yellow-400" />
             <label className="label">
               <span className="label-text font-semibold">
                 YouTube Link or Song Name!
@@ -112,7 +112,7 @@ function YouTube() {
           </div>
           <div>
             <img
-              class="object-cover w-full h-56 rounded sm:h-96"
+              className="object-cover w-full h-56 rounded sm:h-96"
               src="https://i.pinimg.com/originals/f8/8a/ca/f88acab7ffd127b4465659500aa0538f.gif"
               alt=""
             />

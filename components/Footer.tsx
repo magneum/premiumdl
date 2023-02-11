@@ -1,6 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { cursor, useTypewriter } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 
 function Footer() {
   const [Lines, count] = useTypewriter({
