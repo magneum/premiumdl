@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
+import useDownloader from "react-use-downloader";
 import { useTypewriter } from "react-simple-typewriter";
 
 function YouTube() {
@@ -10,11 +11,13 @@ function YouTube() {
   const [urlResult, setUrlResult] = useState<any>();
   const [musicResult, setMusicResult] = useState<any>();
 
+  const { size, elapsed, percentage, download, cancel, error, isInProgress } =
+    useDownloader();
   const handleSubmit = async (event: any) => {
     setLoading(true);
     event.preventDefault();
     const _data = await axios.get("/api/search?q=" + inputUrlRef.current.value);
-    const _mdata = await axios.get("/api/music?q=" + _data.data._Url);
+    const _mdata = await axios.get("/api/audio?q=" + _data.data._Url);
     setMusicResult(_mdata.data);
     setUrlResult(_data.data);
     setLoading(false);
@@ -44,6 +47,12 @@ function YouTube() {
                 </motion.div>
               </h5>
 
+              {/* <p>Download size in bytes {size}</p>
+<label htmlFor="file">Downloading progress:</label>
+<progress id="file" value={percentage} max="100" />
+<p>Elapsed time in seconds {elapsed}</p>
+{error && <p>possible error {JSON.stringify(error)}</p>} */}
+
               <div className="navbar bg-zinc-800 rounded-t-lg">
                 <div className="flex-1 px-2 lg:flex-none">
                   <a className="text-lg font-bold">Download Menu</a>
@@ -63,18 +72,26 @@ function YouTube() {
                       >
                         <li>
                           <a
-                            download="premium.dl.mp4"
-                            href={musicResult._audio}
+                            onClick={() =>
+                              download(
+                                "/" + musicResult._audio,
+                                urlResult._Title + ".mp3"
+                              )
+                            }
                           >
-                            .mp3 (highest)
+                            .mp3 (highest-audio)
                           </a>
                         </li>
                         <li>
                           <a
-                            download="premium.dl.mp4"
-                            href={musicResult._video}
+                            onClick={() =>
+                              download(
+                                "/" + musicResult._video,
+                                urlResult._Title + ".mp4"
+                              )
+                            }
                           >
-                            .mp4 (highest)
+                            .mp4 (not ready)
                           </a>
                         </li>
                       </ul>
@@ -326,7 +343,7 @@ function YouTube() {
                         fill="currentColor"
                       />
                     </svg>
-                    Loading...
+                    Converting...
                   </button>
                 ) : (
                   <button
