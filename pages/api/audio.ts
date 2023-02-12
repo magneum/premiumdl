@@ -19,10 +19,9 @@ export default async function search(
     let query = req.query.q as string;
     const y2 = require("y2mate-api");
     const data = await y2.GetAudio(query);
-
     return res.send({
-      _video: data.video.urlDown,
-      _audio: data.audio.urlDown,
+      _video: data.urlDown,
+      _audio: data.urlDown,
     });
   } catch (error: any) {
     console.log(error);
