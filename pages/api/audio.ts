@@ -26,9 +26,9 @@ export default async function search(
     ffmpeg(aStream)
       .audioBitrate(320)
       .toFormat("ipod")
-      .saveToFile("public/" + got + ".mp3")
+      .saveToFile(got + ".mp3")
       .on("end", () => {
-        return res.send("/" + got + ".mp3");
+        return res.send(got + ".mp3");
       });
     // await new Promise((resolve, reject) => {
     // fdata.on("error", reject);
