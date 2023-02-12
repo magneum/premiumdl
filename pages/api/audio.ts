@@ -3,6 +3,7 @@ import got from "got";
 import url from "url";
 import ytdl from "ytdl-core";
 import ffmpeg from "fluent-ffmpeg";
+const y2 = require("y2mate-api");
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const getRandom = () => {
@@ -16,22 +17,12 @@ export default async function search(
 ) {
   try {
     let query = req.query.q as string;
-    const got = getRandom();
-    const aStream = ytdl(query, {
-      quality: "highestaudio",
-    });
-    ffmpeg(aStream)
-      .audioBitrate(320)
-      .toFormat("ipod")
-      .saveToFile(got + ".mp3")
-      .on("end", () => {});
-    await new Promise((resolve, reject) => {
-      aStream.on("error", reject);
-      aStream.on("finish", resolve);
-    });
+    const y2 = require("y2mate-api");
+    const data = await y2.GetAudio(query);
+
     return res.send({
-      _video: got + ".mp4",
-      _audio: got + ".mp3",
+      _video: data,
+      _audio: data,
     });
   } catch (error: any) {
     console.log(error);
@@ -42,6 +33,7 @@ export default async function search(
   }
 }
 
+// const got = getRandom();
 // const aStream = ytdl(query, {
 // quality: "highestaudio",
 // });
@@ -49,6 +41,8 @@ export default async function search(
 // .audioBitrate(320)
 // .toFormat("ipod")
 // .saveToFile(got + ".mp3")
-// .on("end", () => {
-// return res.send(got + ".mp3");
+// .on("end", () => {});
+// await new Promise((resolve, reject) => {
+// aStream.on("error", reject);
+// aStream.on("finish", resolve);
 // });
