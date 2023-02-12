@@ -21,8 +21,8 @@ export default async function search(
     const data = await y2.GetAudio(query);
 
     return res.send({
-      _video: data,
-      _audio: data,
+      _video: data.video.urlDown,
+      _audio: data.audio.urlDown,
     });
   } catch (error: any) {
     console.log(error);
