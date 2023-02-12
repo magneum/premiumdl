@@ -1,4 +1,3 @@
-import singer from "play-dl";
 import { youtubedl, youtubedlv2 } from "@bochilteam/scraper";
 import type { NextApiRequest, NextApiResponse } from "next";
 
