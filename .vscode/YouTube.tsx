@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
@@ -66,7 +65,7 @@ function YouTube() {
                             download="premium.dl.mp4"
                             href={musicResult._audio}
                           >
-                            .mp3 (highest)
+                            .mp3 (best possible)
                           </a>
                         </li>
                         <li>
@@ -74,7 +73,7 @@ function YouTube() {
                             download="premium.dl.mp4"
                             href={musicResult._video}
                           >
-                            .mp4 (highest)
+                            .mp4 (best possible)
                           </a>
                         </li>
                       </ul>
@@ -84,14 +83,14 @@ function YouTube() {
               </div>
 
               <hr className="border-gray-400" />
-
-              <p className="mb-6 max-w-xl mx-auto text-base tracking-wider leading-relaxed text-gray-500 italic">
-                <span className="text-sm font-bold uppercase">
-                  Description:{" "}
-                </span>{" "}
-                {urlResult._Description.toLowerCase()}
+              <p className="mb-6 text-gray-900">
+                <p className="max-w-xl mx-auto text-base tracking-wider leading-relaxed text-gray-500 italic">
+                  <span className="text-sm font-bold uppercase">
+                    Description:{" "}
+                  </span>{" "}
+                  {urlResult._Description.toLowerCase()}
+                </p>
               </p>
-
               <div className="flex space-x-2 sm:space-x-4 pt-2">
                 <svg
                   fill="none"
@@ -275,15 +274,16 @@ function YouTube() {
                     ☉ {Lines}
                   </h1>
                 </motion.div>
-                <p className="mb-6 text-gray-90 pt-10 pb-10 max-w-xl mx-auto text-base tracking-wider leading-relaxed text-gray-500 italic">
+              </h5>
+              <p className="mb-6 text-gray-900">
+                <p className="pt-10 pb-10 max-w-xl mx-auto text-base tracking-wider leading-relaxed text-gray-500 italic">
                   YouTube is a global online video sharing and social media
                   platform headquartered in San Bruno, California. It was
                   launched on February 14, 2005, by Steve Chen, Chad Hurley, and
                   Jawed Karim. It is owned by Google, and is the second most
                   visited website, after Google Search.
                 </p>
-              </h5>
-
+              </p>
               <hr className="border-yellow-400" />
               <label className="label">
                 <span className="label-text font-semibold">
