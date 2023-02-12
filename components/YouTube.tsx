@@ -75,10 +75,25 @@ function YouTube() {
                         <li>
                           <a
                             onClick={() =>
-                              download(musicResult, urlResult._Title + ".mp3")
+                              download(
+                                musicResult._audio,
+                                urlResult._Title + ".mp3"
+                              )
                             }
                           >
                             .mp3
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            onClick={() =>
+                              download(
+                                musicResult._video,
+                                urlResult._Title + ".mp3"
+                              )
+                            }
+                          >
+                            .mp4
                           </a>
                         </li>
                       </ul>
