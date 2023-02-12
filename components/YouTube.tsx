@@ -14,8 +14,8 @@ function YouTube() {
     setLoading(true);
     event.preventDefault();
     const _data = await axios.get("/api/search?q=" + inputUrlRef.current.value);
-    const _mdata = await axios.get("/api/music?q=" + _data.data._Url);
-    setMusicResult(_mdata.data);
+    // const _mdata = await axios.get("/api/music?q=" + _data.data._Url);
+    // setMusicResult(_mdata.data);
     setUrlResult(_data.data);
     setLoading(false);
   };
@@ -44,44 +44,44 @@ function YouTube() {
                 </motion.div>
               </h5>
 
-              <div className="navbar bg-zinc-800 rounded-t-lg">
-                <div className="flex-1 px-2 lg:flex-none">
-                  <a className="text-lg font-bold">Download Menu</a>
-                </div>
-                <div className="flex justify-end flex-1 px-2">
-                  <div className="flex items-stretch">
-                    <div className="dropdown dropdown-end">
-                      <label
-                        tabIndex={0}
-                        className="btn btn-ghost rounded-btn text-3xl animate-spin text-orange-300 hover:text-orange-500 hover:animate-none"
-                      >
-                        ⌬
-                      </label>
-                      <ul
-                        tabIndex={0}
-                        className="menu dropdown-content p-2 shadow bg-zinc-800 rounded-box w-52 mt-4"
-                      >
-                        <li>
-                          <a
-                            download="premium.dl.mp4"
-                            href={musicResult._audio}
-                          >
-                            .mp3 (highest)
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            download="premium.dl.mp4"
-                            href={musicResult._video}
-                          >
-                            .mp4 (highest)
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* <div className="navbar bg-zinc-800 rounded-t-lg">
+<div className="flex-1 px-2 lg:flex-none">
+<a className="text-lg font-bold">Download Menu</a>
+</div>
+<div className="flex justify-end flex-1 px-2">
+<div className="flex items-stretch">
+<div className="dropdown dropdown-end">
+<label
+tabIndex={0}
+className="btn btn-ghost rounded-btn text-3xl animate-spin text-orange-300 hover:text-orange-500 hover:animate-none"
+>
+⌬
+</label>
+<ul
+tabIndex={0}
+className="menu dropdown-content p-2 shadow bg-zinc-800 rounded-box w-52 mt-4"
+>
+<li>
+<a
+download="premium.dl.mp4"
+href={musicResult._audio}
+>
+.mp3 (highest)
+</a>
+</li>
+<li>
+<a
+download="premium.dl.mp4"
+href={musicResult._video}
+>
+.mp4 (highest)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div> */}
 
               <hr className="border-gray-400" />
 
