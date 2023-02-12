@@ -727,7 +727,7 @@ caniuse-lite@^1.0.30001406, caniuse-lite@^1.0.30001426, caniuse-lite@^1.0.300014
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001451.tgz#2e197c698fc1373d63e1406d6607ea4617c613f1"
   integrity sha512-XY7UbUpGRatZzoRft//5xOa69/1iGJRBlrieH6QYrkKLIFn3m7OVEJ81dSrKoy2BnKsdbX5cLrOispZNYo9v2w==
 
-chalk@^4.0.0:
+chalk@^4.0.0, chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -3011,6 +3011,11 @@ tiny-glob@^0.2.9:
     globalyzer "0.1.0"
     globrex "^0.1.2"
 
+tinyurl@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/tinyurl/-/tinyurl-1.1.7.tgz#1a8a1d56776a7c03a72e803ac902d27783d6d212"
+  integrity sha512-NCnyDkBTByS/pLH/Vrx/DPL8EciAUDoAvruaM/WnQLfX6Uame3D1nuWNy2Z9CXw7rcsok0tjuonRLolhmyz5rg==
+
 to-regex-range@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
@@ -3175,6 +3180,14 @@ xtend@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
+
+y2mate-api@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/y2mate-api/-/y2mate-api-1.6.5.tgz#5d1b5a731886563bdb6a82459dd296f1ede7cb42"
+  integrity sha512-VvYX6FQz2JZcp6H36XqCcU+DVFlmizR/DmS65G5MzwEHX2CcxiKoYZE4PQ4VCfTeVtJi1yfO1gHJLocMEwfWtQ==
+  dependencies:
+    chalk "^4.1.2"
+    tinyurl "^1.1.7"
 
 yallist@^4.0.0:
   version "4.0.0"
