@@ -3,7 +3,7 @@ import got from "got";
 import url from "url";
 import ytdl from "ytdl-core";
 import ffmpeg from "fluent-ffmpeg";
-const y2 = require("y2mate-api");
+import { youtubedl, youtubedlv2, youtubedlv3 } from "@bochilteam/scraper";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const getRandom = () => {
@@ -17,11 +17,14 @@ export default async function search(
 ) {
   try {
     let query = req.query.q as string;
-    const y2 = require("y2mate-api");
-    const data = await y2.GetAudio(query);
+    const yt = await youtubedl(query).catch(
+      async () => await youtubedlv2(query)
+    );
+    const dl_url = await yt.audio["128kbps"].download();
+    const l_url = await yt.video["1080p"].download();
     return res.send({
-      _video: data.urlDown,
-      _audio: data.urlDown,
+      _video: l_url,
+      _audio: dl_url,
     });
   } catch (error: any) {
     console.log(error);
