@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { saveAs } from "file-saver";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import useDownloader from "react-use-downloader";
@@ -73,25 +74,10 @@ function YouTube() {
                         <li>
                           <a
                             onClick={() =>
-                              download(
-                                "/" + musicResult._audio,
-                                urlResult._Title + ".mp3"
-                              )
+                              download(musicResult, urlResult._Title + ".mp3")
                             }
                           >
-                            .mp3 (highest-audio)
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            onClick={() =>
-                              download(
-                                "/" + musicResult._video,
-                                urlResult._Title + ".mp4"
-                              )
-                            }
-                          >
-                            .mp4 (not ready)
+                            .mp3
                           </a>
                         </li>
                       </ul>
