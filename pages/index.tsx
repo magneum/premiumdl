@@ -1,4 +1,3 @@
-import Download from "../components/Download";
 import YouTube from "../components/YouTube";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
