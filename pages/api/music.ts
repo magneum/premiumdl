@@ -10,13 +10,9 @@ export default async function search(
     const yt = await youtubedl(query).catch(
       async () => await youtubedlv2(query)
     );
-    const dl_url = await yt.audio["128kbps"].download();
-    const vdl_url = await yt.video["1080p"].download();
-    const vldl_url = await yt.video["144p"].download();
     return res.send({
-      _audio: dl_url,
-      _video: vdl_url,
-      _videoLowest: vldl_url,
+      _audio: await yt.audio["128kbps"].download(),
+      _video: await yt.video["1080p"].download(),
     });
   } catch (error: any) {
     return res.status(500).json({

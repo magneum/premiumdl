@@ -65,7 +65,7 @@ function YouTube() {
                             download="premium.dl.mp4"
                             href={musicResult._audio}
                           >
-                            .mp3 (highest)
+                            .mp3 (best possible)
                           </a>
                         </li>
                         <li>
@@ -73,15 +73,7 @@ function YouTube() {
                             download="premium.dl.mp4"
                             href={musicResult._video}
                           >
-                            .mp4 (highest)
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            download="premium.dl.mp4"
-                            href={musicResult._videoLowest}
-                          >
-                            .mp4 (lowest)
+                            .mp4 (best possible)
                           </a>
                         </li>
                       </ul>

@@ -33,13 +33,6 @@ export default function Home() {
           <div className="divider text-sky-900 text-2xl"> ☉ </div>
         </div>
 
-        {/* <section id="Download">
-<Download />
-</section>
-<div className="flex flex-col w-full border-opacity-50">
-<div className="divider text-sky-900 text-2xl"> ☉ </div>
-</div> */}
-
         <section id="Footer">
           <Footer />
         </section>
