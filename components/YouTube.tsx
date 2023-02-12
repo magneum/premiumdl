@@ -73,28 +73,10 @@ function YouTube() {
                         className="menu dropdown-content p-2 shadow bg-zinc-800 rounded-box w-52 mt-4"
                       >
                         <li>
-                          <a
-                            onClick={() =>
-                              download(
-                                musicResult._audio,
-                                urlResult._Title + ".mp3"
-                              )
-                            }
-                          >
-                            .mp3
-                          </a>
+                          <a href={musicResult._audio}>.mp3</a>
                         </li>
                         <li>
-                          <a
-                            onClick={() =>
-                              download(
-                                musicResult._video,
-                                urlResult._Title + ".mp3"
-                              )
-                            }
-                          >
-                            .mp4
-                          </a>
+                          <a href={musicResult._video}>.mp4</a>
                         </li>
                       </ul>
                     </div>
