@@ -7,7 +7,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <div className="bg-[#121112] text-white h-screen snap-y snap-mandatory overflow-scroll z-0">
+    <div className="bg-[#121112] text-white h-screen snap-y snap-mandatory overflow-scroll z-0 font-serif">
       <Head>
         <title>Premiumdl</title>
         <meta

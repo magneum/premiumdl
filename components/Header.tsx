@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { SocialIcon } from "react-social-icons";
 
 function Header() {

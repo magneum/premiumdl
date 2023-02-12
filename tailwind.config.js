@@ -4,6 +4,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -11,6 +12,7 @@ module.exports = {
   },
   plugins: [
     require("daisyui"),
+    require("flowbite/plugin"),
     require("@tailwindcss/forms"),
     require("tailwind-scrollbar"),
   ],

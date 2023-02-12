@@ -26,7 +26,7 @@ function Hero() {
                 animate={{ x: 0, opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
               >
-                <h1 className="font-serif max-w-5xl text-5xl font-bold leading-none tracking-tighter md:text-5xl lg:text-6xl lg:max-w-7xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-900 to-blue-600">
+                <h1 className=" max-w-5xl text-5xl font-bold leading-none tracking-tighter md:text-5xl lg:text-6xl lg:max-w-7xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-900 to-blue-600">
                   bit.ly/premiumdl
                 </h1>
               </motion.div>
