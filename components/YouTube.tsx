@@ -54,53 +54,6 @@ function YouTube() {
                   </h1>
                 </motion.div>
               </h5>
-              <div className="navbar bg-zinc-800 rounded-t-lg">
-                <div className="flex-1 px-2 lg:flex-none">
-                  <a className="text-lg font-bold">Download Menu</a>
-                </div>
-                <div className="flex justify-end flex-1 px-2">
-                  <div className="flex items-stretch">
-                    <div className="dropdown dropdown-end">
-                      <label
-                        tabIndex={0}
-                        className="btn btn-ghost rounded-btn text-3xl animate-ping hover:animate-pulse text-orange-300 hover:text-orange-500"
-                      >
-                        <BsArrowDownSquareFill />
-                      </label>
-                      <ul
-                        tabIndex={0}
-                        className="menu dropdown-content p-2 shadow bg-zinc-800 rounded-box w-52 mt-4"
-                      >
-                        <li>
-                          <a
-                            className="italic"
-                            download={urlResult._Title}
-                            href={`${
-                              "https://6zbrn0-44805.preview.csb.app" ||
-                              "http://localhost:4000"
-                            }/music?v=${urlResult._vID}&format=webm`}
-                          >
-                            <BsFillFileMusicFill /> Best possible audio
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="italic"
-                            download={urlResult._Title}
-                            href={`${
-                              "https://6zbrn0-44805.preview.csb.app" ||
-                              "http://localhost:4000"
-                            }/watch?v=${urlResult._vID}&format=mp4`}
-                          >
-                            <BsFillCameraVideoFill /> Best possible video (beta)
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <hr className="border-gray-400" />
               <p className="mb-6 max-w-xl mx-auto text-base tracking-wider leading-relaxed text-gray-500 italic">
                 <span className="text-sm font-bold uppercase">
@@ -108,7 +61,6 @@ function YouTube() {
                 </span>{" "}
                 {urlResult._Description.toLowerCase()}
               </p>
-
               <div className="flex space-x-2 sm:space-x-4 pt-2">
                 <svg
                   fill="none"
@@ -134,7 +86,6 @@ function YouTube() {
                   </p>
                 </div>
               </div>
-
               <div className="flex space-x-2 sm:space-x-4 pt-2">
                 <svg
                   fill="none"
@@ -160,7 +111,6 @@ function YouTube() {
                   </p>
                 </div>
               </div>
-
               <div className="flex space-x-2 sm:space-x-4 pt-2">
                 <svg
                   fill="none"
@@ -186,7 +136,6 @@ function YouTube() {
                   </p>
                 </div>
               </div>
-
               <div className="flex space-x-2 sm:space-x-4 pt-2">
                 <svg
                   fill="none"
@@ -212,7 +161,6 @@ function YouTube() {
                   </p>
                 </div>
               </div>
-
               <div className="flex space-x-2 sm:space-x-4 pt-2">
                 <svg
                   fill="none"
@@ -238,7 +186,6 @@ function YouTube() {
                   </p>
                 </div>
               </div>
-
               <div className="flex space-x-2 sm:space-x-4 pt-2">
                 <svg
                   fill="none"
@@ -264,7 +211,51 @@ function YouTube() {
                   </p>
                 </div>
               </div>
+              <div className="navbar rounded-lg">
+                <div className="flex-1">
+                  <div className="flex items-stretch">
+                    <div className="dropdown dropdown-start">
+                      <label
+                        tabIndex={0}
+                        className="btn btn-ghost rounded-btn text-3xl animate-pulse text-lime-500 font-thin hover:text-orange-500 tracking-widest"
+                      >
+                        <BsArrowDownSquareFill />
+                      </label>
+                      <ul
+                        tabIndex={0}
+                        className="menu dropdown-content p-2 shadow bg-neutral-800 rounded-box w-60 mt-1"
+                      >
+                        <li>
+                          <a
+                            className="italic"
+                            download={urlResult._Title}
+                            href={`${
+                              "https://6zbrn0-43369.preview.csb.app" ||
+                              "http://localhost:4000"
+                            }/music?v=${urlResult._vID}&format=webm`}
+                          >
+                            <BsFillFileMusicFill /> Best possible audio
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="italic"
+                            download={urlResult._Title}
+                            href={`${
+                              "https://6zbrn0-43369.preview.csb.app" ||
+                              "http://localhost:4000"
+                            }/watch?v=${urlResult._vID}&format=mp4`}
+                          >
+                            <BsFillCameraVideoFill /> Best possible video (beta)
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div>
               <span className="label-text font-bold">
                 <span className="text-xl  uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">

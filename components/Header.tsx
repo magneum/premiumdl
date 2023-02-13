@@ -11,11 +11,11 @@ function Header() {
     "hue-rotate-90",
     "hue-rotate-180",
   ];
-  var _colorI = _color[Math.floor(Math.random() * _color.length)];
+  var _colorI = _color[Math.floor(Math.random() * _color.length)]
   return (
     <header className="sticky top-0 p-5 flex items-center justify-center max-w-7xl mx-auto bg-neutral-900 rounded-t rounded-xl">
       <img
-        className={` h-14 w-full rounded-lg ${_colorI}`}
+        className={`h-14 w-full rounded-lg ${_colorI}`}
         alt="hero"
         src="https://music.school/templates/school/images/dist/Sound_wave_preloader.gif"
       ></img>
