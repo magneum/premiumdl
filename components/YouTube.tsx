@@ -79,7 +79,10 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Video Id: <span className="text-white/50 text-sm italic">{urlResult._vID}</span>
+                    Video Id:{" "}
+                    <span className="text-white/50 text-sm italic">
+                      {urlResult._vID}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -101,7 +104,10 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Views: <span className="text-white/50 text-sm italic">{urlResult._Views}</span>
+                    Views:{" "}
+                    <span className="text-white/50 text-sm italic">
+                      {urlResult._Views}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -123,7 +129,10 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    upload Date: <span className="text-white/50 text-sm italic">{urlResult._Uploaded}</span>
+                    upload Date:{" "}
+                    <span className="text-white/50 text-sm italic">
+                      {urlResult._Uploaded}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -145,7 +154,10 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Duration: <span className="text-white/50 text-sm italic">{urlResult._Duration}</span>
+                    Duration:{" "}
+                    <span className="text-white/50 text-sm italic">
+                      {urlResult._Duration}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -167,7 +179,10 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Author: <span className="text-white/50 text-sm italic">{urlResult._Author}</span>
+                    Author:{" "}
+                    <span className="text-white/50 text-sm italic">
+                      {urlResult._Author}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -189,7 +204,10 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Link: <span className="text-white/50 text-sm italic">{urlResult._Url}</span>
+                    Link:{" "}
+                    <span className="text-white/50 text-sm italic">
+                      {urlResult._Url}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -211,11 +229,7 @@ function YouTube() {
                         <li>
                           <a
                             className="italic"
-                            download={urlResult._Title}
-                            href={`${
-                              "https://6zbrn0-43369.preview.csb.app" ||
-                              "http://localhost:4000"
-                            }/music?v=${urlResult._vID}&format=.mp3`}
+                            href={`https://u6lqh8-43369.preview.csb.app/audio?q=${urlResult._vID}`}
                           >
                             <BsFillFileMusicFill /> Best possible audio
                           </a>
@@ -223,11 +237,7 @@ function YouTube() {
                         <li>
                           <a
                             className="italic"
-                            download={urlResult._Title}
-                            href={`${
-                              "https://6zbrn0-43369.preview.csb.app" ||
-                              "http://localhost:4000"
-                            }/watch?v=${urlResult._vID}&format=.mp4`}
+                            href={`https://u6lqh8-43369.preview.csb.app/video?q=${urlResult._vID}`}
                           >
                             <BsFillCameraVideoFill /> Best possible video (beta)
                           </a>
