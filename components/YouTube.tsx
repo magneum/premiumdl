@@ -79,10 +79,7 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Video Id
-                  </p>
-                  <p className="leading-snug text-sm font-light text-gray-400 sm:ml-2 md:ml-4 lg:ml-6 xl:ml-8 italic">
-                    {urlResult._vID}
+                    Video Id: <span className="text-white/50 text-sm italic">{urlResult._vID}</span>
                   </p>
                 </div>
               </div>
@@ -104,10 +101,7 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Views Counter:
-                  </p>
-                  <p className="leading-snug text-sm font-light text-gray-400 sm:ml-2 md:ml-4 lg:ml-6 xl:ml-8 italic">
-                    {urlResult._Views}
+                    Views: <span className="text-white/50 text-sm italic">{urlResult._Views}</span>
                   </p>
                 </div>
               </div>
@@ -129,10 +123,7 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    upload Date:
-                  </p>
-                  <p className="leading-snug text-sm font-light text-gray-400 sm:ml-2 md:ml-4 lg:ml-6 xl:ml-8 italic">
-                    {urlResult._Uploaded}
+                    upload Date: <span className="text-white/50 text-sm italic">{urlResult._Uploaded}</span>
                   </p>
                 </div>
               </div>
@@ -154,10 +145,7 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Duration Video:
-                  </p>
-                  <p className="leading-snug text-sm font-light text-gray-400 sm:ml-2 md:ml-4 lg:ml-6 xl:ml-8 italic">
-                    {urlResult._Duration}
+                    Duration: <span className="text-white/50 text-sm italic">{urlResult._Duration}</span>
                   </p>
                 </div>
               </div>
@@ -179,10 +167,7 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    Author Name & Channel:
-                  </p>
-                  <p className="leading-snug text-sm font-light text-gray-400 sm:ml-2 md:ml-4 lg:ml-6 xl:ml-8 italic">
-                    {urlResult._Author} | {urlResult._Channel}
+                    Author: <span className="text-white/50 text-sm italic">{urlResult._Author}</span>
                   </p>
                 </div>
               </div>
@@ -204,22 +189,20 @@ function YouTube() {
                 </svg>
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
-                    YouTube Link:
-                  </p>
-                  <p className="leading-snug text-sm font-light text-gray-400 sm:ml-2 md:ml-4 lg:ml-6 xl:ml-8 italic">
-                    {urlResult._Url}
+                    Link: <span className="text-white/50 text-sm italic">{urlResult._Url}</span>
                   </p>
                 </div>
               </div>
+
               <div className="navbar rounded-lg">
                 <div className="flex-1">
                   <div className="flex items-stretch">
                     <div className="dropdown dropdown-start">
                       <label
                         tabIndex={0}
-                        className="btn btn-ghost rounded-btn text-3xl animate-pulse text-lime-500 font-thin hover:text-orange-500 tracking-widest"
+                        className="mt-2 btn gap-2 bg-lime-800 rounded-btn text-sm animate-pulse text-white font-thin hover:text-orange-500 tracking-wide"
                       >
-                        <BsArrowDownSquareFill />
+                        <BsArrowDownSquareFill /> download menu
                       </label>
                       <ul
                         tabIndex={0}
@@ -232,7 +215,7 @@ function YouTube() {
                             href={`${
                               "https://6zbrn0-43369.preview.csb.app" ||
                               "http://localhost:4000"
-                            }/music?v=${urlResult._vID}&format=mp3`}
+                            }/music?v=${urlResult._vID}&format=.mp3`}
                           >
                             <BsFillFileMusicFill /> Best possible audio
                           </a>
@@ -244,7 +227,7 @@ function YouTube() {
                             href={`${
                               "https://6zbrn0-43369.preview.csb.app" ||
                               "http://localhost:4000"
-                            }/watch?v=${urlResult._vID}&format=mp4`}
+                            }/watch?v=${urlResult._vID}&format=.mp4`}
                           >
                             <BsFillCameraVideoFill /> Best possible video (beta)
                           </a>
