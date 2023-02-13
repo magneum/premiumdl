@@ -232,7 +232,7 @@ function YouTube() {
                             href={`${
                               "https://6zbrn0-43369.preview.csb.app" ||
                               "http://localhost:4000"
-                            }/music?v=${urlResult._vID}&format=webm`}
+                            }/music?v=${urlResult._vID}&format=mp3`}
                           >
                             <BsFillFileMusicFill /> Best possible audio
                           </a>
