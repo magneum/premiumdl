@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import useDownloader from "react-use-downloader";
+import { BsArrowDownSquareFill } from "react-icons/bs";
 import { useTypewriter } from "react-simple-typewriter";
 
 function YouTube() {
@@ -12,14 +13,17 @@ function YouTube() {
   const [isLoading, setLoading] = useState(false);
   const [urlResult, setUrlResult] = useState<any>();
   const [musicResult, setMusicResult] = useState<any>();
-
+  const [videoResult, setVideoResult] = useState<any>();
   const { size, elapsed, percentage, download, cancel, error, isInProgress } =
     useDownloader();
+
   const handleSubmit = async (event: any) => {
     setLoading(true);
     event.preventDefault();
     const _data = await axios.get("/api/search?q=" + inputUrlRef.current.value);
-    const _mdata = await axios.get("/api/audio?q=" + _data.data._Url);
+    const _vdata = await axios.get("/api/video?q=" + _data.data._Url);
+    const _mdata = await axios.get("/api/song?q=" + _data.data._Url);
+    setVideoResult(_vdata.data);
     setMusicResult(_mdata.data);
     setUrlResult(_data.data);
     setLoading(false);
@@ -48,13 +52,6 @@ function YouTube() {
                   </h1>
                 </motion.div>
               </h5>
-
-              {/* <p>Download size in bytes {size}</p>
-<label htmlFor="file">Downloading progress:</label>
-<progress id="file" value={percentage} max="100" />
-<p>Elapsed time in seconds {elapsed}</p>
-{error && <p>possible error {JSON.stringify(error)}</p>} */}
-
               <div className="navbar bg-zinc-800 rounded-t-lg">
                 <div className="flex-1 px-2 lg:flex-none">
                   <a className="text-lg font-bold">Download Menu</a>
@@ -64,19 +61,34 @@ function YouTube() {
                     <div className="dropdown dropdown-end">
                       <label
                         tabIndex={0}
-                        className="btn btn-ghost rounded-btn text-3xl animate-spin text-orange-300 hover:text-orange-500 hover:animate-none"
+                        className="btn btn-ghost rounded-btn text-3xl animate-ping hover:animate-pulse text-orange-300 hover:text-orange-500"
                       >
-                        ⌬
+                        <BsArrowDownSquareFill />
                       </label>
                       <ul
                         tabIndex={0}
                         className="menu dropdown-content p-2 shadow bg-zinc-800 rounded-box w-52 mt-4"
                       >
                         <li>
-                          <a href={musicResult._audio}>.mp3</a>
+                          <a href={musicResult}>.mp3:audio (128kbps)</a>
                         </li>
                         <li>
-                          <a href={musicResult._video}>.mp4</a>
+                          <a href={videoResult._1080p}>.mp4:video (1080p)</a>
+                        </li>
+                        <li>
+                          <a href={videoResult._720p}>.mp4:video (720p)</a>
+                        </li>
+                        <li>
+                          <a href={videoResult._480p}>.mp4:video (480p)</a>
+                        </li>
+                        <li>
+                          <a href={videoResult._360pp}>.mp4:video (360p)</a>
+                        </li>
+                        <li>
+                          <a href={videoResult._240p}>.mp4:video (240p)</a>
+                        </li>
+                        <li>
+                          <a href={videoResult._144p}>.mp4:video (144p)</a>
                         </li>
                       </ul>
                     </div>
@@ -85,7 +97,6 @@ function YouTube() {
               </div>
 
               <hr className="border-gray-400" />
-
               <p className="mb-6 max-w-xl mx-auto text-base tracking-wider leading-relaxed text-gray-500 italic">
                 <span className="text-sm font-bold uppercase">
                   Description:{" "}
