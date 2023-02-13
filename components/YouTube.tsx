@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
-const { join } = require("path");
-import { saveAs } from "file-saver";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import useDownloader from "react-use-downloader";
-import { BsArrowDownSquareFill } from "react-icons/bs";
+import {
+  BsArrowDownSquareFill,
+  BsFillCameraVideoFill,
+  BsFillFileMusicFill,
+} from "react-icons/bs";
 import { useTypewriter } from "react-simple-typewriter";
 
 function YouTube() {
@@ -21,10 +23,10 @@ function YouTube() {
     setLoading(true);
     event.preventDefault();
     const _data = await axios.get("/api/search?q=" + inputUrlRef.current.value);
-    const _vdata = await axios.get("/api/video?q=" + _data.data._Url);
-    const _mdata = await axios.get("/api/song?q=" + _data.data._Url);
-    setVideoResult(_vdata.data);
-    setMusicResult(_mdata.data);
+    // const _vdata = await axios.get("/api/video?q=" + _data.data._Url);
+    // const _mdata = await axios.get("/api/song?q=" + _data.data._Url);
+    // setVideoResult(_vdata.data);
+    // setMusicResult(_mdata.data);
     setUrlResult(_data.data);
     setLoading(false);
   };
@@ -70,25 +72,28 @@ function YouTube() {
                         className="menu dropdown-content p-2 shadow bg-zinc-800 rounded-box w-52 mt-4"
                       >
                         <li>
-                          <a href={musicResult}>.mp3:audio (128kbps)</a>
+                          <a
+                            className="italic"
+                            download={urlResult._Title}
+                            href={`${
+                              "https://6zbrn0-41479.preview.csb.app" ||
+                              "http://localhost:4000"
+                            }/music?v=${urlResult._vID}&format=webm`}
+                          >
+                            <BsFillFileMusicFill /> Best possible audio
+                          </a>
                         </li>
                         <li>
-                          <a href={videoResult._1080p}>.mp4:video (1080p)</a>
-                        </li>
-                        <li>
-                          <a href={videoResult._720p}>.mp4:video (720p)</a>
-                        </li>
-                        <li>
-                          <a href={videoResult._480p}>.mp4:video (480p)</a>
-                        </li>
-                        <li>
-                          <a href={videoResult._360pp}>.mp4:video (360p)</a>
-                        </li>
-                        <li>
-                          <a href={videoResult._240p}>.mp4:video (240p)</a>
-                        </li>
-                        <li>
-                          <a href={videoResult._144p}>.mp4:video (144p)</a>
+                          <a
+                            className="italic"
+                            download={urlResult._Title}
+                            href={`${
+                              "https://6zbrn0-41479.preview.csb.app" ||
+                              "http://localhost:4000"
+                            }/watch?v=${urlResult._vID}&format=mp4`}
+                          >
+                            <BsFillCameraVideoFill /> Best possible video (beta)
+                          </a>
                         </li>
                       </ul>
                     </div>
