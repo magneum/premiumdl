@@ -14,19 +14,11 @@ function YouTube() {
   const inputUrlRef: any = useRef();
   const [isLoading, setLoading] = useState(false);
   const [urlResult, setUrlResult] = useState<any>();
-  const [musicResult, setMusicResult] = useState<any>();
-  const [videoResult, setVideoResult] = useState<any>();
-  const { size, elapsed, percentage, download, cancel, error, isInProgress } =
-    useDownloader();
 
   const handleSubmit = async (event: any) => {
     setLoading(true);
     event.preventDefault();
     const _data = await axios.get("/api/search?q=" + inputUrlRef.current.value);
-    // const _vdata = await axios.get("/api/video?q=" + _data.data._Url);
-    // const _mdata = await axios.get("/api/song?q=" + _data.data._Url);
-    // setVideoResult(_vdata.data);
-    // setMusicResult(_mdata.data);
     setUrlResult(_data.data);
     setLoading(false);
   };
