@@ -225,7 +225,7 @@ className="menu dropdown-content p-2 shadow bg-neutral-800 rounded-box w-60 mt-1
 <li>
 <a
 className="italic"
-href={`https://premiumdl.onrender.com/audio?q=${urlResult._Url}`}
+href={`https://bj20ee-6464.preview.csb.app/audio?q=${urlResult._Url}`}
 >
 <BsFillFileMusicFill /> audio (best possible)
 </a>
@@ -233,7 +233,7 @@ href={`https://premiumdl.onrender.com/audio?q=${urlResult._Url}`}
 <li>
 <a
 className="italic"
-href={`https://premiumdl.onrender.com/video?q=${urlResult._Url}`}
+href={`https://bj20ee-6464.preview.csb.app/video?q=${urlResult._Url}`}
 >
 <BsFillFileMusicFill /> video (best possible)
 </a>
