@@ -35,7 +35,7 @@ function Hero() {
               </h1>
               <p className="max-w-xl mx-auto mt-8 text-base tracking-wider leading-relaxed text-gray-500 italic">
                 - PREMIUMDL allows you to convert & download video and audio
-                from YouTube, Spotify in HD quality. Available formats are .mp3
+                from YouTube, Spotify in HD quality. Available formats are .webm
                 .mp4
                 <br></br>- You can easily download for free thousands of videos
                 from YouTube and other websites.<br></br>- Once the required

@@ -221,17 +221,14 @@ function YouTube() {
                         <li>
                           <a
                             className="italic"
-                            href={`https://83d6mc-43369.preview.csb.app/audio?q=${urlResult._vID}`}
+                            href={`http://localhost:43369/audio?q=${urlResult._vID}`}
                           >
-                            <BsFillFileMusicFill /> Best possible audio
+                            <BsFillFileMusicFill /> audio (.webm)
                           </a>
                         </li>
                         <li>
-                          <a
-                            className="italic"
-                            href={`https://83d6mc-43369.preview.csb.app/video?q=${urlResult._Url}`}
-                          >
-                            <BsFillCameraVideoFill /> Best possible video (beta)
+                          <a className="italic">
+                            <BsFillCameraVideoFill /> video (coming soon)
                           </a>
                         </li>
                       </ul>
