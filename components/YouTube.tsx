@@ -221,7 +221,7 @@ function YouTube() {
                         <li>
                           <a
                             className="italic"
-                            href={`https://u6lqh8-43369.preview.csb.app/audio?q=${urlResult._vID}`}
+                            href={`https://83d6mc-43369.preview.csb.app/audio?q=${urlResult._vID}`}
                           >
                             <BsFillFileMusicFill /> Best possible audio
                           </a>
@@ -229,7 +229,7 @@ function YouTube() {
                         <li>
                           <a
                             className="italic"
-                            href={`https://u6lqh8-43369.preview.csb.app/video?q=${urlResult._Url}`}
+                            href={`https://83d6mc-43369.preview.csb.app/video?q=${urlResult._Url}`}
                           >
                             <BsFillCameraVideoFill /> Best possible video (beta)
                           </a>
