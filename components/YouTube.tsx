@@ -229,7 +229,7 @@ function YouTube() {
                         <li>
                           <a
                             className="italic"
-                            href={`https://u6lqh8-43369.preview.csb.app/video?q=${urlResult._vID}`}
+                            href={`https://u6lqh8-43369.preview.csb.app/video?q=${urlResult._Url}`}
                           >
                             <BsFillCameraVideoFill /> Best possible video (beta)
                           </a>
