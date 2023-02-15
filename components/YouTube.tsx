@@ -18,13 +18,29 @@ function YouTube() {
   var urlRef: any = useRef();
   var [isLoading, setLoading] = useState(false);
   var [urlResult, setUrlResult] = useState<any>();
-  var [data1080p, setLoading1080p] = useState<any>();
   var [isLoadingVideo, setLoadingVideo] = useState(true);
+
+  // var [data144p, setLoading144p] = useState<any>();
+  // var [data240p, setLoading240p] = useState<any>();
+  // var [data360p, setLoading360p] = useState<any>();
+  // var [data480p, setLoading480p] = useState<any>();
+  // var [data720p, setLoading720p] = useState<any>();
+  var [data1080p, setLoading1080p] = useState<any>();
 
   var handleVideo = async (event: any, link: any) => {
     setLoadingVideo(true);
     event.preventDefault();
+    // var _144p = await axios.get(`/api/video/144p?q=${link}`);
+    // var _240p = await axios.get(`/api/video/240p?q=${link}`);
+    // var _360p = await axios.get(`/api/video/360p?q=${link}`);
+    // var _480p = await axios.get(`/api/video/480p?q=${link}`);
+    // var _720p = await axios.get(`/api/video/720p?q=${link}`);
     var _1080p = await axios.get(`/api/video?q=${link}`);
+    // setLoading144p(_144p.data);
+    // setLoading240p(_240p.data);
+    // setLoading360p(_360p.data);
+    // setLoading480p(_480p.data);
+    // setLoading720p(_720p.data);
     setLoading1080p(_1080p.data);
     setLoadingVideo(false);
   };
