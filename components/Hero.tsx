@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 import { useTypewriter } from "react-simple-typewriter";
 
 function Hero() {
-  const [Lines, count] = useTypewriter({
+  var [Lines, count] = useTypewriter({
     words: ["bit.ly/premiumdl", "bit.ly/Premiumdl"],
     loop: true,
     delaySpeed: 2000,
   });
 
-  const [Lines_, count_] = useTypewriter({
+  var [Lines_, count_] = useTypewriter({
     words: ["Youtube + Spotify Fremium downloder"],
     loop: true,
     delaySpeed: 2000,
@@ -31,7 +31,7 @@ function Hero() {
                 </h1>
               </motion.div>
               <h1 className="pt-2 max-w-5xl text-xl font-bold leading-none tracking-tighter md:text-2xl lg:text-3xl xl:text-4xl lg:max-w-7xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-900 to-blue-600">
-                <br className="hidden lg:block"></br>☉ {Lines_} ☉
+                <br className="hidden lg:block"></br>☉ {Lines_}
               </h1>
               <p className="max-w-xl mx-auto mt-8 text-base tracking-wider leading-relaxed text-gray-500 italic">
                 - PREMIUMDL allows you to convert & download video and audio

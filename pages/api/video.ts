@@ -1,34 +1,165 @@
+var Tube = require("tube-exec");
+var { shorten } = require("tinyurl");
+var process = require("progress-estimator")();
 import type { NextApiRequest, NextApiResponse } from "next";
-import {
-  ymate_v1,
-  ymate_v2,
-  ymate_v3,
-  yfive_v1,
-  yfive_v2,
-} from "../../src/video/index.js";
 
 export default async function search(
-  req: NextApiRequest,
-  res: NextApiResponse
+  request: NextApiRequest,
+  response: NextApiResponse
 ) {
   try {
-    const _data: any = await ymate_v1(req.query.q)
-      .catch(async (_) => await ymate_v2(req.query.q))
-      .catch(async (_) => await ymate_v3(req.query.q));
-    const _Found = {
-      _144p: await _data.video["144p"].download(),
-      _240p: await _data.video["240p"].download(),
-      _360p: await _data.video["360p"].download(),
-      _480p: await _data.video["480p"].download(),
-      _720p: await _data.video["720p"].download(),
-      _1080p: await _data.video["1080p"].download(),
-    };
-    return res.send(_Found);
+    var BlackBox = Tube(request.query.q, {
+      noWarnings: true,
+      dumpSingleJson: true,
+      preferFreeFormats: true,
+      noCheckCertificates: true,
+      addHeader: ["referer:youtube.com", "user-agent:googlebot"],
+    });
+    var _data = await process(BlackBox, "Obtaining: " + request.query.q);
+    // ====================== FOR 144p ======================
+    var _vo_144p = _data.formats.filter(
+      (v: any) =>
+        v.format_id === "17" ||
+        v.format_id === "597" ||
+        v.format_id === "598" ||
+        v.format_id === "394" ||
+        v.format_id === "160" ||
+        v.format_id === "278"
+    );
+    var _Fo_144p =
+      _vo_144p[0] ||
+      _vo_144p[1] ||
+      _vo_144p[2] ||
+      _vo_144p[3] ||
+      _vo_144p[4] ||
+      _vo_144p[5] ||
+      _vo_144p;
+    // ====================== FOR 240p ======================
+    var _vo_240p = _data.formats.filter(
+      (v: any) =>
+        v.format_id === "395" || v.format_id === "133" || v.format_id === "242"
+    );
+    var _Fo_240p = _vo_240p[0] || _vo_240p[1] || _vo_240p[2] || _vo_240p;
+    // ====================== FOR 360p ======================
+    var _vo_360p = _data.formats.filter(
+      (v: any) =>
+        v.format_id === "396" ||
+        v.format_id === "134" ||
+        v.format_id === "18" ||
+        v.format_id === "243"
+    );
+    var _Fo_360p =
+      _vo_360p[0] || _vo_360p[1] || _vo_360p[2] || _vo_360p[3] || _vo_360p;
+    // ====================== FOR 480p ======================
+    var _vo_480p = _data.formats.filter(
+      (v: any) =>
+        v.format_id === "397" || v.format_id === "135" || v.format_id === "244"
+    );
+    var _Fo_480p = _vo_480p[0] || _vo_480p[1] || _vo_480p[2] || _vo_480p;
+    // ====================== FOR 720p ======================
+    var _vo_720p = _data.formats.filter(
+      (v: any) =>
+        v.format_id === "247" ||
+        v.format_id === "398" ||
+        v.format_id === "136" ||
+        v.format_id === "22"
+    );
+    var _Fo_720p =
+      _vo_720p[3] || _vo_720p[2] || _vo_720p[1] || _vo_720p[0] || _vo_720p;
+    // ====================== FOR 1080p ======================
+    var _vo_1080p = _data.formats.filter(
+      (v: any) =>
+        v.format_id === "399" || v.format_id === "137" || v.format_id === "248"
+    );
+    var _Fo_1080p = _vo_1080p[2] || _vo_1080p[1] || _vo_1080p[0] || _vo_1080p;
+    // ================================= Response Sender Logic ======================
+    if (_Fo_1080p.width !== undefined) {
+      return response.send({
+        _1080p: await shorten(_Fo_1080p.url),
+        _720p: await shorten(_Fo_720p.url),
+        _480p: await shorten(_Fo_480p.url),
+        _360p: await shorten(_Fo_360p.url),
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
+      });
+    } else if (_Fo_1080p.width === undefined && _Fo_720p.width !== undefined) {
+      return response.send({
+        _1080p: undefined,
+        _720p: await shorten(_Fo_720p.url),
+        _480p: await shorten(_Fo_480p.url),
+        _360p: await shorten(_Fo_360p.url),
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
+      });
+    } else if (
+      _Fo_1080p.width === undefined &&
+      _Fo_720p.width === undefined &&
+      _Fo_480p.width !== undefined
+    ) {
+      return response.send({
+        _1080p: undefined,
+        _720p: undefined,
+        _480p: await shorten(_Fo_480p.url),
+        _360p: await shorten(_Fo_360p.url),
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
+      });
+    } else if (
+      _Fo_1080p.width === undefined &&
+      _Fo_720p.width === undefined &&
+      _Fo_480p.width === undefined &&
+      _Fo_360p.width !== undefined
+    ) {
+      return response.send({
+        _1080p: undefined,
+        _720p: undefined,
+        _480p: undefined,
+        _360p: await shorten(_Fo_360p.url),
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
+      });
+    } else if (
+      _Fo_1080p.width === undefined &&
+      _Fo_720p.width === undefined &&
+      _Fo_480p.width === undefined &&
+      _Fo_360p.width === undefined &&
+      _Fo_240p.width !== undefined
+    ) {
+      return response.send({
+        _1080p: undefined,
+        _720p: undefined,
+        _480p: undefined,
+        _360p: undefined,
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
+      });
+    } else if (
+      _Fo_1080p.width === undefined &&
+      _Fo_720p.width === undefined &&
+      _Fo_480p.width === undefined &&
+      _Fo_360p.width === undefined &&
+      _Fo_240p.width === undefined &&
+      _Fo_144p.width !== undefined
+    ) {
+      return response.send({
+        _1080p: undefined,
+        _720p: undefined,
+        _480p: undefined,
+        _360p: undefined,
+        _240p: undefined,
+        _144p: await shorten(_Fo_144p.url),
+      });
+    } else
+      return response.status(500).json({
+        status: "error",
+        message: "SORRY: No Streaming Service Found...",
+      });
   } catch (error: any) {
     console.log(error);
-    return res.status(500).json({
+    return response.status(500).json({
       status: "error",
       message: error.mesage,
     });
   }
 }
+// http://localhost:3000/api/video?q=https://youtu.be/SbOaOUHBJ2o
