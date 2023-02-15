@@ -25,7 +25,7 @@ function YouTube() {
   // var [data360p, setLoading360p] = useState<any>();
   // var [data480p, setLoading480p] = useState<any>();
   // var [data720p, setLoading720p] = useState<any>();
-  var [data1080p, setLoading1080p] = useState<any>();
+  var [_magneumData, setMagneumLoading] = useState<any>();
 
   var handleVideo = async (event: any, link: any) => {
     setLoadingVideo(true);
@@ -35,13 +35,13 @@ function YouTube() {
     // var _360p = await axios.get(`/api/video/360p?q=${link}`);
     // var _480p = await axios.get(`/api/video/480p?q=${link}`);
     // var _720p = await axios.get(`/api/video/720p?q=${link}`);
-    var _1080p = await axios.get(`/api/video?q=${link}`);
+    var _magFile = await axios.get(`/api/video?q=${link}`);
     // setLoading144p(_144p.data);
     // setLoading240p(_240p.data);
     // setLoading360p(_360p.data);
     // setLoading480p(_480p.data);
     // setLoading720p(_720p.data);
-    setLoading1080p(_1080p.data);
+    setMagneumLoading(_magFile.data);
     setLoadingVideo(false);
   };
 
@@ -234,9 +234,16 @@ function YouTube() {
                 </div>
               </div>
 
+              <span className="label-text-alt font-bold text-yellow-400">
+                ⚠️ Download wait time depends on video length.<br></br>💡 Be
+                patient best things takes time to happen.
+              </span>
               {isLoadingVideo ? (
-                <button onClick={(e) => handleVideo(e, urlResult._Url)}>
-                  Get menu<br></br>
+                <button
+                  onClick={(e) => handleVideo(e, urlResult._Url)}
+                  className="mt-2 inline-flex text-white bg-neutral-600 border-0 py-2 px-6 focus:outline-none hover:bg-neutral-700 rounded text-lg"
+                >
+                  Get menu
                 </button>
               ) : (
                 <div className="navbar rounded-lg">
@@ -254,9 +261,111 @@ function YouTube() {
                           className="menu dropdown-content p-2 shadow bg-neutral-800 rounded-box w-60 mt-1"
                         >
                           <li>
-                            <a className="italic" href={data1080p.url}>
-                              <BsFillFileMusicFill /> audio (best possible)
-                            </a>
+                            {_magneumData._1080p !== undefined ? (
+                              <a className="italic" href={_magneumData._1080p}>
+                                <BsFillFileMusicFill /> 1080p{" "}
+                                <span className="text-green-800">
+                                  (best possible)
+                                </span>
+                              </a>
+                            ) : (
+                              <a className="italic">
+                                <BsFillFileMusicFill /> 1080p{" "}
+                                <span className="text-red-800">
+                                  (not available)
+                                </span>
+                              </a>
+                            )}
+                          </li>
+
+                          <li>
+                            {_magneumData._720p !== undefined ? (
+                              <a className="italic" href={_magneumData._720p}>
+                                <BsFillFileMusicFill /> 720p{" "}
+                                <span className="text-green-800">
+                                  (best possible)
+                                </span>
+                              </a>
+                            ) : (
+                              <a className="italic">
+                                <BsFillFileMusicFill /> 720p{" "}
+                                <span className="text-red-800">
+                                  (not available)
+                                </span>
+                              </a>
+                            )}
+                          </li>
+
+                          <li>
+                            {_magneumData._480p !== undefined ? (
+                              <a className="italic" href={_magneumData._480p}>
+                                <BsFillFileMusicFill /> 480p{" "}
+                                <span className="text-green-800">
+                                  (best possible)
+                                </span>
+                              </a>
+                            ) : (
+                              <a className="italic">
+                                <BsFillFileMusicFill /> 480p{" "}
+                                <span className="text-red-800">
+                                  (not available)
+                                </span>
+                              </a>
+                            )}
+                          </li>
+
+                          <li>
+                            {_magneumData._360p !== undefined ? (
+                              <a className="italic" href={_magneumData._360p}>
+                                <BsFillFileMusicFill /> 360p{" "}
+                                <span className="text-green-800">
+                                  (best possible)
+                                </span>
+                              </a>
+                            ) : (
+                              <a className="italic">
+                                <BsFillFileMusicFill /> 360p{" "}
+                                <span className="text-red-800">
+                                  (not available)
+                                </span>
+                              </a>
+                            )}
+                          </li>
+
+                          <li>
+                            {_magneumData._240p !== undefined ? (
+                              <a className="italic" href={_magneumData._240p}>
+                                <BsFillFileMusicFill /> 240p{" "}
+                                <span className="text-green-800">
+                                  (best possible)
+                                </span>
+                              </a>
+                            ) : (
+                              <a className="italic">
+                                <BsFillFileMusicFill /> 240p{" "}
+                                <span className="text-red-800">
+                                  (not available)
+                                </span>
+                              </a>
+                            )}
+                          </li>
+
+                          <li>
+                            {_magneumData._144p !== undefined ? (
+                              <a className="italic" href={_magneumData._144p}>
+                                <BsFillFileMusicFill /> 144p{" "}
+                                <span className="text-green-800">
+                                  (best possible)
+                                </span>
+                              </a>
+                            ) : (
+                              <a className="italic">
+                                <BsFillFileMusicFill /> 144p{" "}
+                                <span className="text-red-800">
+                                  (not available)
+                                </span>
+                              </a>
+                            )}
                           </li>
                         </ul>
                       </div>
@@ -265,45 +374,47 @@ function YouTube() {
                 </div>
               )}
 
-              <span className="label-text-alt font-bold text-yellow-400">
-                ⚠️ Download wait time depends on video length.<br></br>💡 Be
-                patient best things takes time to happen.
-              </span>
-              <div className="navbar rounded-lg">
-                <div className="flex-1">
-                  <div className="flex items-stretch">
-                    <div className="dropdown dropdown-start">
-                      <label
-                        tabIndex={0}
-                        className="mt-2 btn gap-2 bg-lime-800 rounded-btn text-sm animate-pulse text-white font-thin hover:text-orange-500 tracking-wide"
-                      >
-                        <BsArrowDownSquareFill /> download menu
-                      </label>
-                      <ul
-                        tabIndex={0}
-                        className="menu dropdown-content p-2 shadow bg-neutral-800 rounded-box w-60 mt-1"
-                      >
-                        <li>
-                          <a
-                            className="italic"
-                            href={`https://bj20ee-3001.preview.csb.app/audio?q=${urlResult._Url}`}
-                          >
-                            <BsFillFileMusicFill /> audio (best possible)
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="italic"
-                            href={`https://bj20ee-3001.preview.csb.app/video?q=${urlResult._Url}`}
-                          >
-                            <BsFillFileMusicFill /> video (best possible)
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* <div className="navbar rounded-lg">
+<div className="flex-1">
+<div className="flex items-stretch">
+<div className="dropdown dropdown-start">
+<label
+tabIndex={0}
+className="mt-2 btn gap-2 bg-lime-800 rounded-btn text-sm animate-pulse text-white font-thin hover:text-orange-500 tracking-wide"
+>
+<BsArrowDownSquareFill /> download menu
+</label>
+<ul
+tabIndex={0}
+className="menu dropdown-content p-2 shadow bg-neutral-800 rounded-box w-60 mt-1"
+>
+<li>
+<a
+className="italic"
+href={`https://bj20ee-3001.preview.csb.app/audio?q=${urlResult._Url}`}
+>
+<BsFillFileMusicFill /> audio{" "}
+<span className="text-green-800">
+(best possible)
+</span>
+</a>
+</li>
+<li>
+<a
+className="italic"
+href={`https://bj20ee-3001.preview.csb.app/video?q=${urlResult._Url}`}
+>
+<BsFillFileMusicFill /> video{" "}
+<span className="text-green-800">
+(best possible)
+</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div> */}
             </div>
 
             <div>
