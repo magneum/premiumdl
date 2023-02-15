@@ -1,59 +1,34 @@
-var Tube = require("tube-exec");
-var { shorten } = require("tinyurl");
+var ffmpeg = require("fluent-ffmpeg");
 var process = require("progress-estimator")();
+var contentDisposition = require("content-disposition");
+var ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function search(
-  request: NextApiRequest,
-  response: NextApiResponse
+request: NextApiRequest,
+response: NextApiResponse
 ) {
-  try {
-    var BlackBox = Tube(request.query.q, {
-      noWarnings: true,
-      dumpSingleJson: true,
-      preferFreeFormats: true,
-      noCheckCertificates: true,
-      addHeader: ["referer:youtube.com", "user-agent:googlebot"],
-    });
-    var _data = await process(BlackBox, "Obtaining: " + request.query.q);
-    // ====================== FOR Medium ======================
-    var a_medium = _data.formats.filter(
-      (v: any) => v.format_id === "140" || v.format_id === "251"
-    );
-    var dTa_medium = a_medium[0] || a_medium[1] || a_medium;
-    // ====================== FOR Low ======================
-    var a_low = _data.formats.filter(
-      (v: any) =>
-        v.format_id === "139" || v.format_id === "249" || v.format_id === "250"
-    );
-    var dTa_low = a_low[0] || a_low[1] || a_low[2] || a_low;
-    // ====================== FOR Ultralow ======================
-    var a_ultralow = _data.formats.filter(
-      (v: any) => v.format_id === "599" || v.format_id === "600"
-    );
-    var dTa_ultralow = a_ultralow[0] || a_ultralow[1] || a_ultralow;
-    // ================================= Response Sender Logic ======================
-    if (dTa_medium.width !== undefined) {
-      return response.send(await shorten(dTa_medium.url));
-    } else if (dTa_medium.width === undefined && dTa_low.width !== undefined) {
-      return response.send(await shorten(dTa_low.url));
-    } else if (
-      dTa_medium.width === undefined &&
-      dTa_low.width === undefined &&
-      dTa_ultralow.width !== undefined
-    ) {
-      return response.send(await shorten(dTa_ultralow.url));
-    } else
-      return response.status(500).json({
-        status: "error",
-        message: "SORRY: No Streaming Service Found...",
-      });
-  } catch (error: any) {
-    console.log(error);
-    return response.status(500).json({
-      status: "error",
-      message: error.mesage,
-    });
-  }
+try {
+let _title = request.query.title as any;
+var _audio = request.query.qaudio as any;
+let _format = request.query.format as any;
+response.setHeader(
+"Content-disposition",
+contentDisposition(`premiumdl-video-${_format}-${_title}.mp4`)
+);
+ffmpeg(_audio)
+.format("mp3")
+.setFfmpegPath(ffmpegPath)
+.output(response, { end: true })
+.on("error", (e: any) => console.error("ERROR: " + e.message))
+.on("end", () => console.log("INFO: stream sent to client successfully."))
+.on("progresponses", async (p: any) =>  await process(p.progress, "Obtaining" + ": "))
+.run();
+} catch (error: any) {
+console.log(error);
+return response.status(500).json({
+status: "error",
+message: error.mesage,
+});
 }
-// http://localhost:3000/api/video?q=https://youtu.be/SbOaOUHBJ2o
+}

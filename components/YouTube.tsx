@@ -1,37 +1,18 @@
 import React from "react";
 import axios from "axios";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
-import {
-  BsArrowDownSquareFill,
-  BsArrowLeftCircle,
-  BsFillCameraVideoFill,
-  BsFillFileMusicFill,
-} from "react-icons/bs";
 import { useTypewriter } from "react-simple-typewriter";
+import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
 
 function YouTube() {
   var urlRef: any = useRef();
   var [isLoading, setLoading] = useState(false);
   var [urlResult, setUrlResult] = useState<any>();
-  var [isLoadingTemp, setLoadingTemp] = useState(false);
   var [isLoadingVideo, setLoadingVideo] = useState(true);
   var [isLoadingAudio, setLoadingAudio] = useState(true);
   var [isVideoData, setLoadingVideoData] = useState<any>();
   var [isAudioData, setLoadingAudioData] = useState<any>();
-
-  // var handleMagik = async (event: any, link: any) => {
-  // setLoadingVideo(true);
-  // setLoadingAudio(true);
-  // event.preventDefault();
-  // var _FileV = await axios.get(`/api/video?q=${link}`);
-  // var _FileA = await axios.get(`/api/audio?q=${link}`);
-  // setLoadingVideoData(_FileV.data);
-  // setLoadingAudioData(_FileA.data);
-  // setLoadingVideo(false);
-  // setLoadingAudio(false);
-  // };
 
   var handleSubmit = async (event: any) => {
     setLoading(true);
@@ -39,10 +20,10 @@ function YouTube() {
     setLoadingAudio(true);
     event.preventDefault();
     var _data = await axios.get("/api/search?q=" + urlRef.current.value);
-    var _FileV = await axios.get(`/api/video?q=${_data.data._Url}`);
-    var _FileA = await axios.get(`/api/audio?q=${_data.data._Url}`);
-    setLoadingVideoData(_FileV.data);
-    setLoadingAudioData(_FileA.data);
+    var _vdata = await axios.get("http://localhost:4000/video?q=" + _data.data._Url);
+    var _adata = await axios.get("http://localhost:4000/audio?q=" + _data.data._Url);
+    setLoadingVideoData(_vdata.data);
+    setLoadingAudioData(_adata.data);
     setUrlResult(_data.data);
     setLoadingVideo(false);
     setLoadingAudio(false);
@@ -244,7 +225,8 @@ function YouTube() {
                         tabIndex={0}
                         className="btn btn-ghost bg-lime-900/50 text-xs"
                       >
-                        <BsFillFileMusicFill /> <span className="text-xs ml-2">audio</span>
+                        <BsFillFileMusicFill />{" "}
+                        <span className="text-xs ml-2">audio</span>
                       </label>
                       <ul
                         tabIndex={0}
@@ -264,7 +246,8 @@ function YouTube() {
                         tabIndex={0}
                         className="btn btn-ghost bg-lime-900/50 text-xs"
                       >
-                         <BsFillCameraVideoFill /> <span className="text-xs ml-2">video</span>
+                        <BsFillCameraVideoFill />{" "}
+                        <span className="text-xs ml-2">video</span>
                       </label>
                       <ul
                         tabIndex={0}
@@ -274,7 +257,7 @@ function YouTube() {
                           {isVideoData._1080p !== undefined ? (
                             <a
                               className="italic"
-                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=1080p`}
+                              href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=1080p`}
                             >
                               1080p{" "}
                             </a>
@@ -285,7 +268,7 @@ function YouTube() {
                           {isVideoData._720p !== undefined ? (
                             <a
                               className="italic"
-                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=720p`}
+                              href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=720p`}
                             >
                               720p{" "}
                             </a>
@@ -296,7 +279,7 @@ function YouTube() {
                           {isVideoData._480p !== undefined ? (
                             <a
                               className="italic"
-                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=480p`}
+                              href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=480p`}
                             >
                               480p{" "}
                             </a>
@@ -307,7 +290,7 @@ function YouTube() {
                           {isVideoData._360p !== undefined ? (
                             <a
                               className="italic"
-                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=360p`}
+                              href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=360p`}
                             >
                               360p{" "}
                             </a>
@@ -318,7 +301,7 @@ function YouTube() {
                           {isVideoData._240p !== undefined ? (
                             <a
                               className="italic"
-                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=240p`}
+                              href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=240p`}
                             >
                               240p{" "}
                             </a>
@@ -329,7 +312,7 @@ function YouTube() {
                           {isVideoData._144p !== undefined ? (
                             <a
                               className="italic"
-                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=144p`}
+                              href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=144p`}
                             >
                               144p{" "}
                             </a>
