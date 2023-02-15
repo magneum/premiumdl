@@ -53,11 +53,7 @@
     "tube-core": "*",
     "tube-exec": "*",
     "typescript": "4.9.5",
-    "y2mate-api": "^1.6.5",
-    "youtube-dl-exec": "^2.2.3",
-    "yt-search": "^2.10.4",
-    "ytdl-core": "^4.11.2",
-    "ytdl-secktor": "^0.0.1-development"
+    "yt-search": "^2.10.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
