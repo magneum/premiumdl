@@ -1,6 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 var Tube = require("tube-exec");
 var process = require("progress-estimator")();
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function search(
   req: NextApiRequest,
@@ -14,16 +14,14 @@ export default async function search(
       noCheckCertificates: true,
       addHeader: ["referer:youtube.com", "user-agent:googlebot"],
     });
-    var _data = await process(BlackBox, "Obtaining: " + req.query.q);
-    var v_1080p = _data.formats.filter(
+    var _data = await process(BlackBox, "Obtaining (480p)" + ": ");
+    var _vojs = _data.formats.filter(
       (v: any) =>
-        v.format_id === "399" || v.format_id === "137" || v.format_id === "248"
+        v.format_id === "397" || v.format_id === "135" || v.format_id === "244"
     );
-    var dTv_1080p = v_1080p[2] || v_1080p[1] || v_1080p[0] || v_1080p;
-    if (dTv_1080p.width !== undefined) {
-      return res.send(dTv_1080p);
-    }
-    return res.send(null);
+    var _Found = _vojs[0] || _vojs[1] || _vojs[2] || _vojs;
+    if (_Found.width !== undefined) return res.send(_Found);
+    else return res.send(null);
   } catch (error: any) {
     console.log(error);
     return res.status(500).json({
@@ -32,4 +30,3 @@ export default async function search(
     });
   }
 }
-// http://localhost:3000/api/video/_1080p?q=https://youtu.be/SbOaOUHBJ2o

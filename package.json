@@ -47,7 +47,16 @@
     "youtube-dl-exec": "^2.2.3",
     "yt-search": "^2.10.4",
     "ytdl-core": "^4.11.2",
-    "ytdl-secktor": "^0.0.1-development"
+    "ytdl-secktor": "^0.0.1-development",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "ffmpeg-on-progress": "^1.0.0",
+    "ffmpeg-static": "^5.1.0",
+    "spinnies": "^0.5.1",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "progress-estimator": "^0.3.0",
+    "tube-core": "*",
+    "tube-exec": "*"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
