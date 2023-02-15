@@ -14,7 +14,7 @@ export default async function search(
     let _format = request.query.format as any;
     response.setHeader(
       "Content-disposition",
-      contentDisposition(`PREMIUMDL| ${_format}_${_title}.mp4`)
+      contentDisposition(`premiumdl-video-${_format}-${_title}.mp4`)
     );
     ffmpeg()
       .setFfmpegPath(ffmpegPath)

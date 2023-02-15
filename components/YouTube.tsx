@@ -253,7 +253,7 @@ function YouTube() {
                             {isVideoData._1080p !== undefined ? (
                               <a
                                 className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=_1080p`}
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=1080p`}
                               >
                                 <BsFillFileMusicFill /> 1080p{" "}
                                 <span className="text-green-800">
@@ -274,7 +274,7 @@ function YouTube() {
                             {isVideoData._720p !== undefined ? (
                               <a
                                 className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=_720p`}
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=720p`}
                               >
                                 <BsFillFileMusicFill /> 720p{" "}
                                 <span className="text-green-800">
@@ -295,7 +295,7 @@ function YouTube() {
                             {isVideoData._480p !== undefined ? (
                               <a
                                 className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=_480p`}
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=480p`}
                               >
                                 <BsFillFileMusicFill /> 480p{" "}
                                 <span className="text-green-800">
@@ -316,7 +316,7 @@ function YouTube() {
                             {isVideoData._360p !== undefined ? (
                               <a
                                 className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=_360p`}
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=360p`}
                               >
                                 <BsFillFileMusicFill /> 360p{" "}
                                 <span className="text-green-800">
@@ -337,7 +337,7 @@ function YouTube() {
                             {isVideoData._240p !== undefined ? (
                               <a
                                 className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=_240p`}
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=240p`}
                               >
                                 <BsFillFileMusicFill /> 240p{" "}
                                 <span className="text-green-800">
@@ -358,7 +358,7 @@ function YouTube() {
                             {isVideoData._144p !== undefined ? (
                               <a
                                 className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=_144p`}
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=144p`}
                               >
                                 <BsFillFileMusicFill /> 144p{" "}
                                 <span className="text-green-800">
