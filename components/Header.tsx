@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { SocialIcon } from "react-social-icons";
 
 function Header() {
-  const [seconds, setSeconds] = useState(0);
-  const _color = [
+  var [seconds, setSeconds] = useState(0);
+  var _color = [
     "hue-rotate-15",
     "hue-rotate-30",
     "hue-rotate-60",

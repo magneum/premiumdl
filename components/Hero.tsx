@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 import { useTypewriter } from "react-simple-typewriter";
 
 function Hero() {
-  const [Lines, count] = useTypewriter({
+  var [Lines, count] = useTypewriter({
     words: ["bit.ly/premiumdl", "bit.ly/Premiumdl"],
     loop: true,
     delaySpeed: 2000,
   });
 
-  const [Lines_, count_] = useTypewriter({
+  var [Lines_, count_] = useTypewriter({
     words: ["Youtube + Spotify Fremium downloder"],
     loop: true,
     delaySpeed: 2000,
