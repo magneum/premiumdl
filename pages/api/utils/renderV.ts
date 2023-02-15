@@ -1,4 +1,3 @@
-var axios = require("axios");
 var ffmpeg = require("fluent-ffmpeg");
 var contentDisposition = require("content-disposition");
 var ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
@@ -9,14 +8,18 @@ export default async function search(
   response: NextApiResponse
 ) {
   try {
+    let _title = request.query.title as any;
+    let _video = request.query.qvideo as any;
+    var _audio = request.query.qaudio as any;
+    let _format = request.query.format as any;
     response.setHeader(
       "Content-disposition",
-      contentDisposition(`premiumdl-video-${request.query.t}.mp4`)
+      contentDisposition(`PREMIUMDL| ${_format}_${_title}.mp4`)
     );
     ffmpeg()
       .setFfmpegPath(ffmpegPath)
-      .addInput(request.query.v)
-      .addInput(request.query.a)
+      .addInput(_video)
+      .addInput(_audio)
       .outputOptions(["-map 0:v", "-map 1:a", "-shortest", "-c:v copy"])
       .videoCodec("libx264")
       .withAudioCodec("aac")

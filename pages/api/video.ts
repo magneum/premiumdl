@@ -1,20 +1,21 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 var Tube = require("tube-exec");
+var { shorten } = require("tinyurl");
 var process = require("progress-estimator")();
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function search(
-  req: NextApiRequest,
-  res: NextApiResponse
+  request: NextApiRequest,
+  response: NextApiResponse
 ) {
   try {
-    var BlackBox = Tube(req.query.q, {
+    var BlackBox = Tube(request.query.q, {
       noWarnings: true,
       dumpSingleJson: true,
       preferFreeFormats: true,
       noCheckCertificates: true,
       addHeader: ["referer:youtube.com", "user-agent:googlebot"],
     });
-    var _data = await process(BlackBox, "Obtaining: " + req.query.q);
+    var _data = await process(BlackBox, "Obtaining: " + request.query.q);
     // ====================== FOR 144p ======================
     var _vo_144p = _data.formats.filter(
       (v: any) =>
@@ -73,35 +74,35 @@ export default async function search(
     var _Fo_1080p = _vo_1080p[2] || _vo_1080p[1] || _vo_1080p[0] || _vo_1080p;
     // ================================= Response Sender Logic ======================
     if (_Fo_1080p.width !== undefined) {
-      return res.send({
-        _1080p: _Fo_1080p.url,
-        _720p: _Fo_720p.url,
-        _480p: _Fo_480p.url,
-        _360p: _Fo_360p.url,
-        _240p: _Fo_240p.url,
-        _144p: _Fo_144p.url,
+      return response.send({
+        _1080p: await shorten(_Fo_1080p.url),
+        _720p: await shorten(_Fo_720p.url),
+        _480p: await shorten(_Fo_480p.url),
+        _360p: await shorten(_Fo_360p.url),
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
       });
     } else if (_Fo_1080p.width === undefined && _Fo_720p.width !== undefined) {
-      return res.send({
+      return response.send({
         _1080p: undefined,
-        _720p: _Fo_720p.url,
-        _480p: _Fo_480p.url,
-        _360p: _Fo_360p.url,
-        _240p: _Fo_240p.url,
-        _144p: _Fo_144p.url,
+        _720p: await shorten(_Fo_720p.url),
+        _480p: await shorten(_Fo_480p.url),
+        _360p: await shorten(_Fo_360p.url),
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
       });
     } else if (
       _Fo_1080p.width === undefined &&
       _Fo_720p.width === undefined &&
       _Fo_480p.width !== undefined
     ) {
-      return res.send({
+      return response.send({
         _1080p: undefined,
         _720p: undefined,
-        _480p: _Fo_480p.url,
-        _360p: _Fo_360p.url,
-        _240p: _Fo_240p.url,
-        _144p: _Fo_144p.url,
+        _480p: await shorten(_Fo_480p.url),
+        _360p: await shorten(_Fo_360p.url),
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
       });
     } else if (
       _Fo_1080p.width === undefined &&
@@ -109,13 +110,13 @@ export default async function search(
       _Fo_480p.width === undefined &&
       _Fo_360p.width !== undefined
     ) {
-      return res.send({
+      return response.send({
         _1080p: undefined,
         _720p: undefined,
         _480p: undefined,
-        _360p: _Fo_360p.url,
-        _240p: _Fo_240p.url,
-        _144p: _Fo_144p.url,
+        _360p: await shorten(_Fo_360p.url),
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
       });
     } else if (
       _Fo_1080p.width === undefined &&
@@ -124,13 +125,13 @@ export default async function search(
       _Fo_360p.width === undefined &&
       _Fo_240p.width !== undefined
     ) {
-      return res.send({
+      return response.send({
         _1080p: undefined,
         _720p: undefined,
         _480p: undefined,
         _360p: undefined,
-        _240p: _Fo_240p.url,
-        _144p: _Fo_144p.url,
+        _240p: await shorten(_Fo_240p.url),
+        _144p: await shorten(_Fo_144p.url),
       });
     } else if (
       _Fo_1080p.width === undefined &&
@@ -140,22 +141,22 @@ export default async function search(
       _Fo_240p.width === undefined &&
       _Fo_144p.width !== undefined
     ) {
-      return res.send({
+      return response.send({
         _1080p: undefined,
         _720p: undefined,
         _480p: undefined,
         _360p: undefined,
         _240p: undefined,
-        _144p: undefined,
+        _144p: await shorten(_Fo_144p.url),
       });
     } else
-      return res.status(500).json({
+      return response.status(500).json({
         status: "error",
         message: "SORRY: No Streaming Service Found...",
       });
   } catch (error: any) {
     console.log(error);
-    return res.status(500).json({
+    return response.status(500).json({
       status: "error",
       message: error.mesage,
     });

@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
-import useDownloader from "react-use-downloader";
 import {
   BsArrowDownSquareFill,
   BsFillCameraVideoFill,
@@ -19,30 +18,20 @@ function YouTube() {
   var [isLoading, setLoading] = useState(false);
   var [urlResult, setUrlResult] = useState<any>();
   var [isLoadingVideo, setLoadingVideo] = useState(true);
+  var [isLoadingAudio, setLoadingAudio] = useState(true);
+  var [isVideoData, setLoadingVideoData] = useState<any>();
+  var [isAudioData, setLoadingAudioData] = useState<any>();
 
-  // var [data144p, setLoading144p] = useState<any>();
-  // var [data240p, setLoading240p] = useState<any>();
-  // var [data360p, setLoading360p] = useState<any>();
-  // var [data480p, setLoading480p] = useState<any>();
-  // var [data720p, setLoading720p] = useState<any>();
-  var [_magneumData, setMagneumLoading] = useState<any>();
-
-  var handleVideo = async (event: any, link: any) => {
+  var handleMagik = async (event: any, link: any) => {
     setLoadingVideo(true);
+    setLoadingAudio(true);
     event.preventDefault();
-    // var _144p = await axios.get(`/api/video/144p?q=${link}`);
-    // var _240p = await axios.get(`/api/video/240p?q=${link}`);
-    // var _360p = await axios.get(`/api/video/360p?q=${link}`);
-    // var _480p = await axios.get(`/api/video/480p?q=${link}`);
-    // var _720p = await axios.get(`/api/video/720p?q=${link}`);
-    var _magFile = await axios.get(`/api/video?q=${link}`);
-    // setLoading144p(_144p.data);
-    // setLoading240p(_240p.data);
-    // setLoading360p(_360p.data);
-    // setLoading480p(_480p.data);
-    // setLoading720p(_720p.data);
-    setMagneumLoading(_magFile.data);
+    var _FileV = await axios.get(`/api/video?q=${link}`);
+    var _FileA = await axios.get(`/api/audio?q=${link}`);
+    setLoadingVideoData(_FileV.data);
+    setLoadingAudioData(_FileA.data);
     setLoadingVideo(false);
+    setLoadingAudio(false);
   };
 
   var handleSubmit = async (event: any) => {
@@ -238,9 +227,9 @@ function YouTube() {
                 ⚠️ Download wait time depends on video length.<br></br>💡 Be
                 patient best things takes time to happen.
               </span>
-              {isLoadingVideo ? (
+              {isLoadingVideo && isLoadingAudio ? (
                 <button
-                  onClick={(e) => handleVideo(e, urlResult._Url)}
+                  onClick={(e) => handleMagik(e, urlResult._Url)}
                   className="mt-2 inline-flex text-white bg-neutral-600 border-0 py-2 px-6 focus:outline-none hover:bg-neutral-700 rounded text-lg"
                 >
                   Get menu
@@ -261,8 +250,11 @@ function YouTube() {
                           className="menu dropdown-content p-2 shadow bg-neutral-800 rounded-box w-60 mt-1"
                         >
                           <li>
-                            {_magneumData._1080p !== undefined ? (
-                              <a className="italic" href={_magneumData._1080p}>
+                            {isVideoData._1080p !== undefined ? (
+                              <a
+                                className="italic"
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=_1080p`}
+                              >
                                 <BsFillFileMusicFill /> 1080p{" "}
                                 <span className="text-green-800">
                                   (best possible)
@@ -279,8 +271,11 @@ function YouTube() {
                           </li>
 
                           <li>
-                            {_magneumData._720p !== undefined ? (
-                              <a className="italic" href={_magneumData._720p}>
+                            {isVideoData._720p !== undefined ? (
+                              <a
+                                className="italic"
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=_720p`}
+                              >
                                 <BsFillFileMusicFill /> 720p{" "}
                                 <span className="text-green-800">
                                   (best possible)
@@ -297,8 +292,11 @@ function YouTube() {
                           </li>
 
                           <li>
-                            {_magneumData._480p !== undefined ? (
-                              <a className="italic" href={_magneumData._480p}>
+                            {isVideoData._480p !== undefined ? (
+                              <a
+                                className="italic"
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=_480p`}
+                              >
                                 <BsFillFileMusicFill /> 480p{" "}
                                 <span className="text-green-800">
                                   (best possible)
@@ -315,8 +313,11 @@ function YouTube() {
                           </li>
 
                           <li>
-                            {_magneumData._360p !== undefined ? (
-                              <a className="italic" href={_magneumData._360p}>
+                            {isVideoData._360p !== undefined ? (
+                              <a
+                                className="italic"
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=_360p`}
+                              >
                                 <BsFillFileMusicFill /> 360p{" "}
                                 <span className="text-green-800">
                                   (best possible)
@@ -333,8 +334,11 @@ function YouTube() {
                           </li>
 
                           <li>
-                            {_magneumData._240p !== undefined ? (
-                              <a className="italic" href={_magneumData._240p}>
+                            {isVideoData._240p !== undefined ? (
+                              <a
+                                className="italic"
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=_240p`}
+                              >
                                 <BsFillFileMusicFill /> 240p{" "}
                                 <span className="text-green-800">
                                   (best possible)
@@ -351,8 +355,11 @@ function YouTube() {
                           </li>
 
                           <li>
-                            {_magneumData._144p !== undefined ? (
-                              <a className="italic" href={_magneumData._144p}>
+                            {isVideoData._144p !== undefined ? (
+                              <a
+                                className="italic"
+                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=_144p`}
+                              >
                                 <BsFillFileMusicFill /> 144p{" "}
                                 <span className="text-green-800">
                                   (best possible)
@@ -373,48 +380,6 @@ function YouTube() {
                   </div>
                 </div>
               )}
-
-              {/* <div className="navbar rounded-lg">
-<div className="flex-1">
-<div className="flex items-stretch">
-<div className="dropdown dropdown-start">
-<label
-tabIndex={0}
-className="mt-2 btn gap-2 bg-lime-800 rounded-btn text-sm animate-pulse text-white font-thin hover:text-orange-500 tracking-wide"
->
-<BsArrowDownSquareFill /> download menu
-</label>
-<ul
-tabIndex={0}
-className="menu dropdown-content p-2 shadow bg-neutral-800 rounded-box w-60 mt-1"
->
-<li>
-<a
-className="italic"
-href={`https://bj20ee-3001.preview.csb.app/audio?q=${urlResult._Url}`}
->
-<BsFillFileMusicFill /> audio{" "}
-<span className="text-green-800">
-(best possible)
-</span>
-</a>
-</li>
-<li>
-<a
-className="italic"
-href={`https://bj20ee-3001.preview.csb.app/video?q=${urlResult._Url}`}
->
-<BsFillFileMusicFill /> video{" "}
-<span className="text-green-800">
-(best possible)
-</span>
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div> */}
             </div>
 
             <div>
