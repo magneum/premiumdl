@@ -1,44 +1,51 @@
 import React from "react";
 import axios from "axios";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   BsArrowDownSquareFill,
+  BsArrowLeftCircle,
   BsFillCameraVideoFill,
   BsFillFileMusicFill,
 } from "react-icons/bs";
 import { useTypewriter } from "react-simple-typewriter";
-var backend =
-  "https://bj20ee-3001.preview.csb.app/" ||
-  "https://premiumdl.up.railway.app/" ||
-  "http://localhost:6969/";
 
 function YouTube() {
   var urlRef: any = useRef();
   var [isLoading, setLoading] = useState(false);
   var [urlResult, setUrlResult] = useState<any>();
+  var [isLoadingTemp, setLoadingTemp] = useState(false);
   var [isLoadingVideo, setLoadingVideo] = useState(true);
   var [isLoadingAudio, setLoadingAudio] = useState(true);
   var [isVideoData, setLoadingVideoData] = useState<any>();
   var [isAudioData, setLoadingAudioData] = useState<any>();
 
-  var handleMagik = async (event: any, link: any) => {
-    setLoadingVideo(true);
-    setLoadingAudio(true);
-    event.preventDefault();
-    var _FileV = await axios.get(`/api/video?q=${link}`);
-    var _FileA = await axios.get(`/api/audio?q=${link}`);
-    setLoadingVideoData(_FileV.data);
-    setLoadingAudioData(_FileA.data);
-    setLoadingVideo(false);
-    setLoadingAudio(false);
-  };
+  // var handleMagik = async (event: any, link: any) => {
+  // setLoadingVideo(true);
+  // setLoadingAudio(true);
+  // event.preventDefault();
+  // var _FileV = await axios.get(`/api/video?q=${link}`);
+  // var _FileA = await axios.get(`/api/audio?q=${link}`);
+  // setLoadingVideoData(_FileV.data);
+  // setLoadingAudioData(_FileA.data);
+  // setLoadingVideo(false);
+  // setLoadingAudio(false);
+  // };
 
   var handleSubmit = async (event: any) => {
     setLoading(true);
+    setLoadingVideo(true);
+    setLoadingAudio(true);
     event.preventDefault();
     var _data = await axios.get("/api/search?q=" + urlRef.current.value);
+    var _FileV = await axios.get(`/api/video?q=${_data.data._Url}`);
+    var _FileA = await axios.get(`/api/audio?q=${_data.data._Url}`);
+    setLoadingVideoData(_FileV.data);
+    setLoadingAudioData(_FileA.data);
     setUrlResult(_data.data);
+    setLoadingVideo(false);
+    setLoadingAudio(false);
     setLoading(false);
   };
 
@@ -227,155 +234,110 @@ function YouTube() {
                 ⚠️ Download wait time depends on video length.<br></br>💡 Be
                 patient best things takes time to happen.
               </span>
-              {isLoadingVideo && isLoadingAudio ? (
-                <button
-                  onClick={(e) => handleMagik(e, urlResult._Url)}
-                  className="mt-2 inline-flex text-white bg-neutral-600 border-0 py-2 px-6 focus:outline-none hover:bg-neutral-700 rounded text-lg"
-                >
-                  Get menu
-                </button>
-              ) : (
-                <div className="navbar rounded-lg">
-                  <div className="flex-1">
-                    <div className="flex items-stretch">
-                      <div className="dropdown dropdown-start">
-                        <label
-                          tabIndex={0}
-                          className="mt-2 btn gap-2 bg-lime-800 rounded-btn text-sm animate-pulse text-white font-thin hover:text-orange-500 tracking-wide"
-                        >
-                          <BsArrowDownSquareFill /> download menu
-                        </label>
-                        <ul
-                          tabIndex={0}
-                          className="menu dropdown-content p-2 shadow bg-neutral-800 rounded-box w-60 mt-1"
-                        >
-                          <li>
-                            {isVideoData._1080p !== undefined ? (
-                              <a
-                                className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=1080p`}
-                              >
-                                <BsFillFileMusicFill /> 1080p{" "}
-                                <span className="text-green-800">
-                                  (best possible)
-                                </span>
-                              </a>
-                            ) : (
-                              <a className="italic">
-                                <BsFillFileMusicFill /> 1080p{" "}
-                                <span className="text-red-800">
-                                  (not available)
-                                </span>
-                              </a>
-                            )}
-                          </li>
+              <br></br>
 
-                          <li>
-                            {isVideoData._720p !== undefined ? (
-                              <a
-                                className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=720p`}
-                              >
-                                <BsFillFileMusicFill /> 720p{" "}
-                                <span className="text-green-800">
-                                  (best possible)
-                                </span>
-                              </a>
-                            ) : (
-                              <a className="italic">
-                                <BsFillFileMusicFill /> 720p{" "}
-                                <span className="text-red-800">
-                                  (not available)
-                                </span>
-                              </a>
-                            )}
-                          </li>
+              {isLoadingVideo && isLoadingAudio ? null : (
+                <div className="navbar">
+                  <div className="navbar-start">
+                    <div className="dropdown pr-2">
+                      <label
+                        tabIndex={0}
+                        className="btn btn-ghost bg-lime-900/50 text-xs"
+                      >
+                        <BsFillFileMusicFill /> <span className="text-xs ml-2">audio</span>
+                      </label>
+                      <ul
+                        tabIndex={0}
+                        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 border rounded-lg border-orange-800/50"
+                      >
+                        <li tabIndex={0}>
+                          <a className="justify-between">Medium</a>
+                          <a className="justify-between">Low</a>
+                          <a className="justify-between">Lowest</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <br></br>
 
-                          <li>
-                            {isVideoData._480p !== undefined ? (
-                              <a
-                                className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=480p`}
-                              >
-                                <BsFillFileMusicFill /> 480p{" "}
-                                <span className="text-green-800">
-                                  (best possible)
-                                </span>
-                              </a>
-                            ) : (
-                              <a className="italic">
-                                <BsFillFileMusicFill /> 480p{" "}
-                                <span className="text-red-800">
-                                  (not available)
-                                </span>
-                              </a>
-                            )}
-                          </li>
+                    <div className="dropdown pr-3">
+                      <label
+                        tabIndex={0}
+                        className="btn btn-ghost bg-lime-900/50 text-xs"
+                      >
+                         <BsFillCameraVideoFill /> <span className="text-xs ml-2">video</span>
+                      </label>
+                      <ul
+                        tabIndex={0}
+                        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 border rounded-lg border-orange-800/50"
+                      >
+                        <li tabIndex={0}>
+                          {isVideoData._1080p !== undefined ? (
+                            <a
+                              className="italic"
+                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=1080p`}
+                            >
+                              1080p{" "}
+                            </a>
+                          ) : (
+                            <a className="italic">- 1080p </a>
+                          )}
 
-                          <li>
-                            {isVideoData._360p !== undefined ? (
-                              <a
-                                className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=360p`}
-                              >
-                                <BsFillFileMusicFill /> 360p{" "}
-                                <span className="text-green-800">
-                                  (best possible)
-                                </span>
-                              </a>
-                            ) : (
-                              <a className="italic">
-                                <BsFillFileMusicFill /> 360p{" "}
-                                <span className="text-red-800">
-                                  (not available)
-                                </span>
-                              </a>
-                            )}
-                          </li>
+                          {isVideoData._720p !== undefined ? (
+                            <a
+                              className="italic"
+                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=720p`}
+                            >
+                              720p{" "}
+                            </a>
+                          ) : (
+                            <a className="italic">- 720p </a>
+                          )}
 
-                          <li>
-                            {isVideoData._240p !== undefined ? (
-                              <a
-                                className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=240p`}
-                              >
-                                <BsFillFileMusicFill /> 240p{" "}
-                                <span className="text-green-800">
-                                  (best possible)
-                                </span>
-                              </a>
-                            ) : (
-                              <a className="italic">
-                                <BsFillFileMusicFill /> 240p{" "}
-                                <span className="text-red-800">
-                                  (not available)
-                                </span>
-                              </a>
-                            )}
-                          </li>
+                          {isVideoData._480p !== undefined ? (
+                            <a
+                              className="italic"
+                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=480p`}
+                            >
+                              480p{" "}
+                            </a>
+                          ) : (
+                            <a className="italic">- 480p </a>
+                          )}
 
-                          <li>
-                            {isVideoData._144p !== undefined ? (
-                              <a
-                                className="italic"
-                                href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=144p`}
-                              >
-                                <BsFillFileMusicFill /> 144p{" "}
-                                <span className="text-green-800">
-                                  (best possible)
-                                </span>
-                              </a>
-                            ) : (
-                              <a className="italic">
-                                <BsFillFileMusicFill /> 144p{" "}
-                                <span className="text-red-800">
-                                  (not available)
-                                </span>
-                              </a>
-                            )}
-                          </li>
-                        </ul>
-                      </div>
+                          {isVideoData._360p !== undefined ? (
+                            <a
+                              className="italic"
+                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=360p`}
+                            >
+                              360p{" "}
+                            </a>
+                          ) : (
+                            <a className="italic">- 360p </a>
+                          )}
+
+                          {isVideoData._240p !== undefined ? (
+                            <a
+                              className="italic"
+                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=240p`}
+                            >
+                              240p{" "}
+                            </a>
+                          ) : (
+                            <a className="italic">- 240p </a>
+                          )}
+
+                          {isVideoData._144p !== undefined ? (
+                            <a
+                              className="italic"
+                              href={`/api/utils/renderV?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=144p`}
+                            >
+                              144p{" "}
+                            </a>
+                          ) : (
+                            <a className="italic">- 144p </a>
+                          )}
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
