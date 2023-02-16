@@ -11,6 +11,7 @@ var [isLoading, setLoading] = useState(false);
 var [urlResult, setUrlResult] = useState<any>();
 var [isLoadingVideo, setLoadingVideo] = useState(true);
 var [isLoadingAudio, setLoadingAudio] = useState(true);
+var [isMusicData, setLoadingMusicData] = useState<any>();
 var [isVideoData, setLoadingVideoData] = useState<any>();
 var [isAudioData, setLoadingAudioData] = useState<any>();
 
@@ -20,10 +21,18 @@ setLoadingVideo(true);
 setLoadingAudio(true);
 event.preventDefault();
 var _data = await axios.get("/api/search?q=" + urlRef.current.value);
-var _vdata = await axios.get(`https://tzhqho-3001.preview.csb.app/video?q=` + _data.data._Url);
-var _adata = await axios.get(`https://tzhqho-3001.preview.csb.app/audio?q=` + _data.data._Url);
+var _vdata = await axios.get(
+`http://localhost:4000/video?q=` + _data.data._Url
+);
+var _adata = await axios.get(
+`http://localhost:4000/audio?q=` + _data.data._Url
+);
+var _mudata = await axios.get(
+`http://localhost:4000/music?q=` + _data.data._Url
+);
 setLoadingVideoData(_vdata.data);
 setLoadingAudioData(_adata.data);
+setLoadingMusicData(_mudata.data);
 setUrlResult(_data.data);
 setLoadingVideo(false);
 setLoadingAudio(false);
@@ -233,29 +242,40 @@ tabIndex={0}
 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 border rounded-lg border-orange-800/50"
 >
 <li tabIndex={0}>
+{isAudioData._medium !== undefined ? (
 <a
 className="italic"
-href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData}&format=Medium`}
+href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData._medium}&format=medium`}
 >
 Medium
 </a>
+) : (
+<a className="italic">- Medium </a>
+)}
+{isAudioData._low !== undefined ? (
 <a
 className="italic"
-href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData}&format=Medium`}
+href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData._low}&format=low`}
 >
 Low
 </a>
+) : (
+<a className="italic">- Low </a>
+)}
+{isAudioData._medium !== undefined ? (
 <a
 className="italic"
-href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData}&format=Medium`}
+href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData._lowest}&format=lowest`}
 >
 Lowest
 </a>
+) : (
+<a className="italic">- Lowest </a>
+)}
 </li>
 </ul>
 </div>
 <br></br>
-
 <div className="dropdown pr-3">
 <label
 tabIndex={0}
@@ -271,10 +291,10 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 <li tabIndex={0}>
 {isVideoData._1080p !== undefined ? (
 <a
-    className="italic"
-    href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=1080p`}
+className="italic"
+href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isMusicData}&format=1080p`}
 >
-    1080p
+1080p
 </a>
 ) : (
 <a className="italic">- 1080p </a>
@@ -282,10 +302,10 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {isVideoData._720p !== undefined ? (
 <a
-    className="italic"
-    href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=720p`}
+className="italic"
+href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isMusicData}&format=720p`}
 >
-    720p
+720p
 </a>
 ) : (
 <a className="italic">- 720p </a>
@@ -293,10 +313,10 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {isVideoData._480p !== undefined ? (
 <a
-    className="italic"
-    href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=480p`}
+className="italic"
+href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isMusicData}&format=480p`}
 >
-    480p
+480p
 </a>
 ) : (
 <a className="italic">- 480p </a>
@@ -304,10 +324,10 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {isVideoData._360p !== undefined ? (
 <a
-    className="italic"
-    href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=360p`}
+className="italic"
+href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isMusicData}&format=360p`}
 >
-    360p
+360p
 </a>
 ) : (
 <a className="italic">- 360p </a>
@@ -315,10 +335,10 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {isVideoData._240p !== undefined ? (
 <a
-    className="italic"
-    href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=240p`}
+className="italic"
+href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isMusicData}&format=240p`}
 >
-    240p
+240p
 </a>
 ) : (
 <a className="italic">- 240p </a>
@@ -326,10 +346,10 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {isVideoData._144p !== undefined ? (
 <a
-    className="italic"
-    href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=144p`}
+className="italic"
+href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isMusicData}&format=144p`}
 >
-    144p
+144p
 </a>
 ) : (
 <a className="italic">- 144p </a>
@@ -387,7 +407,45 @@ YouTube Link or Song Name!
 ⚠️ required
 </span>
 </label>
+
 <form onSubmit={handleSubmit}>
+{isLoading ? (
+<div>
+<button
+type="button"
+className="mt-2 bg-stone-800 inline-flex items-center px-4 py-2 text-sm font-semibold leading-6 text-yellow-400 transition duration-150 ease-in-out rounded-md shadow cursor-not-allowed border border-yellow-700"
+disabled
+>
+<svg
+className="w-5 h-5 mr-3 -ml-1 text-yellow-500 animate-spin"
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+viewBox="0 0 24 24"
+>
+<circle
+className="opacity-25"
+cx="12"
+cy="12"
+r="10"
+stroke="currentColor"
+stroke-width="4"
+></circle>
+<path
+className="opacity-75"
+fill="currentColor"
+d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+></path>
+</svg>
+<span className="label-text-alt text-yellow-500 text-xs">
+💡 Be patient!{" "}
+<span className="italic">
+Good things need time to happen.
+</span>
+</span>
+</button>
+</div>
+) : (
+<div>
 <input
 required
 type="text"
@@ -397,38 +455,14 @@ ref={urlRef}
 placeholder="required"
 className="w-full rounded bg-stone-900 focus:ring-2 focus:ring-neutral-600 focus:bg-transparent focus:border-orange-500 text-base outline-none text-gray-100 px-2 transition-colors duration-200 ease-in-out"
 ></input>
-{isLoading ? (
-<button
-disabled
-type="button"
-className="mt-2 text-white bg-orange-700 hover:bg-orange-800 focus:ring-1 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 inline-flex items-center"
->
-<svg
-aria-hidden="true"
-role="status"
-className="inline w-4 h-4 mr-3 text-white animate-spin"
-viewBox="0 0 100 101"
-fill="none"
-xmlns="http://www.w3.org/2000/svg"
->
-<path
-d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-fill="#E5E7EB"
-/>
-<path
-d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-fill="currentColor"
-/>
-</svg>
-Converting...
-</button>
-) : (
+
 <button
 type="submit"
 className="mt-2 inline-flex text-white bg-neutral-600 border-0 py-2 px-6 focus:outline-none hover:bg-neutral-700 rounded text-lg"
 >
 Search
 </button>
+</div>
 )}
 </form>
 </div>
