@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "backend": "forever backend.js",
-    "backenddev": "nodemon backend.js"
+    "backendev": "nodemon backend.js"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.0.22-alpha.0",
