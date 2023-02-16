@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "backend": "cd backend && yarn install && yarn start",
-    "backenddev": "cd backend && yarn install && yarn dev",
     "dev": "next dev",
+    "lint": "next lint",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "backend": "forever backend.js",
+    "backenddev": "nodemon backend.js"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.0.22-alpha.0",
