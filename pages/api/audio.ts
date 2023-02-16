@@ -10,7 +10,7 @@ export default async function search(request: any, response: any) {
     let _audio = response.query.audio as string;
     response.setHeader(
       "Content-disposition",
-      contentDisposition(`premiumdl-audio-${_title}.mp3`)
+      contentDisposition(`premiumdl-audio-${_title}.mp4`)
     );
     FFmpeg(_audio)
       .format("mp3")
