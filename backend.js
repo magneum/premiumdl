@@ -3,7 +3,7 @@ var axios = require("axios");
 var Tube = require("tube-exec");
 var Spinnies = require("spinnies");
 var { shorten } = require("tinyurl");
-var progress = require("progress-estimator")();
+// var progress = require("progress-estimator")();
 var port = process.env.PORT || process.env.port || 4000;
 // ===========================================================================================================
 var express = require("express");
@@ -30,7 +30,7 @@ preferFreeFormats: true,
 noCheckCertificates: true,
 addHeader: ["referer:youtube.com", "user-agent:googlebot"],
 });
-var obj = await progress(bb, "/music Time" + ": ");
+var obj = bb // await progress(bb, "/music Time" + ": ");
 var a_ultralow = obj.formats.filter(
 (v) => v.format_id === "599" || v.format_id === "600"
 );
@@ -75,7 +75,7 @@ preferFreeFormats: true,
 noCheckCertificates: true,
 addHeader: ["referer:youtube.com", "user-agent:googlebot"],
 });
-var obj = await progress(bb, "/audio Time" + ": ");
+var obj = bb // await progress(bb, "/audio Time" + ": ");
 var a_ultralow = obj.formats.filter(
 (v) => v.format_id === "599" || v.format_id === "600"
 );
@@ -132,7 +132,7 @@ preferFreeFormats: true,
 noCheckCertificates: true,
 addHeader: ["referer:youtube.com", "user-agent:googlebot"],
 });
-var obj = await progress(bb, "/video Time" + ": ");
+var obj = bb // await progress(bb, "/video Time" + ": ");
 var v_1080p = obj.formats.filter(
 (v) =>
 v.format_id === "399" || v.format_id === "137" || v.format_id === "248"
