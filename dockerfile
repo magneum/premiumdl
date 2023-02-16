@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python-is-python3
 RUN curl -s https://deb.nodesource.com/setup_16.x | bash
-RUN apt-get update && apt-get install nodejs -y
+RUN apt-get update && apt-get install nodejs -y 
+RUN npm i -g yarn 
 RUN git clone --branch render https://github.com/magneum/premiumdl
 RUN cd premiumdl
 WORKDIR /premiumdl
