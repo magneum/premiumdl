@@ -1,0 +1,18 @@
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y \
+    jq \
+    git \
+    curl \
+    wget \
+    ffmpeg \
+    bpm-tools \
+    opus-tools \
+    python3-pip \
+    python-is-python3
+RUN curl -s https://deb.nodesource.com/setup_16.x | bash
+RUN apt-get update && apt-get install nodejs -y
+RUN git clone https://github.com/magneum/premiumdl-soda
+RUN cd premiumdl-soda
+WORKDIR /premiumdl-soda
+RUN rm -f yarn.lock && npm i && npm i -g spotify-dl spdl-core forever yarn
+CMD [ "yarn", "start" ]
