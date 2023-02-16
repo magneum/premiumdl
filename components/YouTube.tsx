@@ -6,10 +6,10 @@ import { useTypewriter } from "react-simple-typewriter";
 import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
 
 function getAudio(audio: any, title: any) {
-return `/audio?audio=${audio}&title=${title}`;
+return `/api/audio?audio=${audio}&title=${title}`;
 }
 function getVideo(audio: any, title: any, video: any) {
-return `/video?video=${video}&audio=${audio}&title=${title}`;
+return `/api/video?video=${video}&audio=${audio}&title=${title}`;
 }
 
 function YouTube() {
@@ -19,7 +19,7 @@ var [gotmetadata, setmetaData] = useState<any>();
 var handleSubmit = async (event: any) => {
 event.preventDefault();
 setLoading(true);
-var _got = await axios.get(`/metadata?q=${userInput.current.value}`);
+var _got = await axios.get(`/api/metadata?q=${userInput.current.value}`);
 setmetaData(_got.data);
 setLoading(false);
 console.log(gotmetadata);

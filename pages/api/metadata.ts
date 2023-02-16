@@ -1,7 +1,24 @@
 import axios from "axios";
+var https = require("https");
 var Tube = require("tube-exec");
 var progress = require("progress-estimator")();
-
+function shrink(url: any) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(
+        "https://tinyurl.com/api-create.php?url=" + encodeURIComponent(url),
+        (res: any) => {
+          res.on("data", (chunk: any) => {
+            resolve(chunk.toString());
+          });
+        }
+      )
+      .on("error", (err: any) => {
+        reject(err);
+      });
+  });
+}
+// ===========================================================================================================
 export default async function search(request: any, response: any) {
   try {
     let _ALINK: any;
@@ -105,29 +122,29 @@ export default async function search(request: any, response: any) {
     if (T_1080p.width !== undefined) {
       return response.status(200).json({
         success: true,
-        _audio: _ALINK,
         _search: _FOUND,
+        _audio: await shrink(_ALINK),
         _video: {
-          _1080p: T_1080p.url,
-          _720p: T_720p.url,
-          _480p: T_480p.url,
-          _360p: T_360p.url,
-          _240p: T_240p.url,
-          _144p: T_144p.url,
+          _1080p: await shrink(T_1080p.url),
+          _720p: await shrink(T_720p.url),
+          _480p: await shrink(T_480p.url),
+          _360p: await shrink(T_360p.url),
+          _240p: await shrink(T_240p.url),
+          _144p: await shrink(T_144p.url),
         },
       });
     } else if (T_1080p.width === undefined && T_720p.width !== undefined) {
       return response.status(200).json({
         success: true,
-        _audio: _ALINK,
         _search: _FOUND,
+        _audio: _ALINK,
         _video: {
           _1080p: undefined,
-          _720p: T_720p.url,
-          _480p: T_480p.url,
-          _360p: T_360p.url,
-          _240p: T_240p.url,
-          _144p: T_144p.url,
+          _720p: await shrink(T_720p.url),
+          _480p: await shrink(T_480p.url),
+          _360p: await shrink(T_360p.url),
+          _240p: await shrink(T_240p.url),
+          _144p: await shrink(T_144p.url),
         },
       });
     } else if (
@@ -137,15 +154,15 @@ export default async function search(request: any, response: any) {
     ) {
       return response.status(200).json({
         success: true,
-        _audio: _ALINK,
         _search: _FOUND,
+        _audio: _ALINK,
         _video: {
           _1080p: undefined,
           _720p: undefined,
-          _480p: T_480p.url,
-          _360p: T_360p.url,
-          _240p: T_240p.url,
-          _144p: T_144p.url,
+          _480p: await shrink(T_480p.url),
+          _360p: await shrink(T_360p.url),
+          _240p: await shrink(T_240p.url),
+          _144p: await shrink(T_144p.url),
         },
       });
     } else if (
@@ -156,15 +173,15 @@ export default async function search(request: any, response: any) {
     ) {
       return response.status(200).json({
         success: true,
-        _audio: _ALINK,
         _search: _FOUND,
+        _audio: _ALINK,
         _video: {
           _1080p: undefined,
           _720p: undefined,
           _480p: undefined,
-          _360p: T_360p.url,
-          _240p: T_240p.url,
-          _144p: T_144p.url,
+          _360p: await shrink(T_360p.url),
+          _240p: await shrink(T_240p.url),
+          _144p: await shrink(T_144p.url),
         },
       });
     } else if (
@@ -176,15 +193,15 @@ export default async function search(request: any, response: any) {
     ) {
       return response.status(200).json({
         success: true,
-        _audio: _ALINK,
         _search: _FOUND,
+        _audio: _ALINK,
         _video: {
           _1080p: undefined,
           _720p: undefined,
           _480p: undefined,
           _360p: undefined,
-          _240p: T_240p.url,
-          _144p: T_144p.url,
+          _240p: await shrink(T_240p.url),
+          _144p: await shrink(T_144p.url),
         },
       });
     } else if (
@@ -197,15 +214,15 @@ export default async function search(request: any, response: any) {
     ) {
       return response.status(200).json({
         success: true,
-        _audio: _ALINK,
         _search: _FOUND,
+        _audio: _ALINK,
         _video: {
           _1080p: undefined,
           _720p: undefined,
           _480p: undefined,
           _360p: undefined,
           _240p: undefined,
-          _144p: T_144p.url,
+          _144p: await shrink(T_144p.url),
         },
       });
     } else {
