@@ -22,13 +22,13 @@ setLoadingAudio(true);
 event.preventDefault();
 var _data = await axios.get("/api/search?q=" + urlRef.current.value);
 var _vdata = await axios.get(
-`http://localhost:4000/video?q=` + _data.data._Url
+`https://tzhqho-3001.preview.csb.app/video?q=` + _data.data._Url
 );
 var _adata = await axios.get(
-`http://localhost:4000/audio?q=` + _data.data._Url
+`https://tzhqho-3001.preview.csb.app/audio?q=` + _data.data._Url
 );
 var _mudata = await axios.get(
-`http://localhost:4000/music?q=` + _data.data._Url
+`https://tzhqho-3001.preview.csb.app/music?q=` + _data.data._Url
 );
 setLoadingVideoData(_vdata.data);
 setLoadingAudioData(_adata.data);
