@@ -10,7 +10,7 @@ import {
 } from "react-icons/bs";
 import { MdOutlinePermIdentity, MdDateRange } from "react-icons/Md";
 import { GiSixEyes, GiDuration } from "react-icons/Gi";
-import { BiCodeCurly } from "react-icons/Bi";
+// import { BiCodeCurly } from "react-icons/Bi";
 
 function getAudio(audio: any, title: any) {
   return `https://tz2k7x-33073.preview.csb.app/audio?audio=${audio}&title=${title}`;
@@ -121,7 +121,7 @@ function YouTube() {
                 </div>
               </div>
               <div className="flex space-x-2 sm:space-x-4 pt-2">
-                <BiCodeCurly />
+                🔗
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                     Link:{" "}
