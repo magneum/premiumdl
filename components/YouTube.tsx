@@ -3,20 +3,13 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useTypewriter } from "react-simple-typewriter";
-import {
-BsFillCameraVideoFill,
-BsFillFileMusicFill,
-// BsFillPenFill,
-} from "react-icons/bs";
-// import { MdOutlinePermIdentity, MdDateRange } from "react-icons/Md";
-// import { GiSixEyes, GiDuration } from "react-icons/Gi";
-// import { BiCodeCurly } from "react-icons/Bi";
+import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
 
 function getAudio(audio: any, title: any) {
-return `https://tz2k7x-33073.preview.csb.app/audio?audio=${audio}&title=${title}`;
+return `/audio?audio=${audio}&title=${title}`;
 }
 function getVideo(audio: any, title: any, video: any) {
-return `https://tz2k7x-33073.preview.csb.app/video?video=${video}&audio=${audio}&title=${title}`;
+return `/video?video=${video}&audio=${audio}&title=${title}`;
 }
 
 function YouTube() {
@@ -26,9 +19,7 @@ var [gotmetadata, setmetaData] = useState<any>();
 var handleSubmit = async (event: any) => {
 event.preventDefault();
 setLoading(true);
-var _got = await axios.get(
-`https://tz2k7x-33073.preview.csb.app/metadata?q=${userInput.current.value}`
-);
+var _got = await axios.get(`/metadata?q=${userInput.current.value}`);
 setmetaData(_got.data);
 setLoading(false);
 console.log(gotmetadata);
@@ -147,7 +138,6 @@ tabIndex={0}
 className="btn btn-ghost bg-orange-900 animate-pulse text-xl"
 >
 <BsFillFileMusicFill />
-{/* <span className="text-xs ml-2" >audio</span> */}
 </label>
 <ul
 tabIndex={0}
@@ -157,8 +147,8 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 <a
 className="italic"
 href={getAudio(
-  gotmetadata._audio,
-  gotmetadata._search.TITLE
+gotmetadata._audio,
+gotmetadata._search.TITLE
 )}
 >
 best available
@@ -173,7 +163,6 @@ tabIndex={0}
 className="btn btn-ghost bg-orange-900 animate-pulse text-xl"
 >
 <BsFillCameraVideoFill />
-{/* <span className="text-xs ml-2" >video</span> */}
 </label>
 <ul
 tabIndex={0}
@@ -182,14 +171,14 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 <li tabIndex={0}>
 {gotmetadata._video._1080p !== undefined ? (
 <a
-  className="italic"
-  href={getVideo(
-    gotmetadata._audio,
-    gotmetadata._search.TITLE,
-    gotmetadata._video._1080p
-  )}
+className="italic"
+href={getVideo(
+gotmetadata._audio,
+gotmetadata._search.TITLE,
+gotmetadata._video._1080p
+)}
 >
-  1080p
+1080p
 </a>
 ) : (
 <a className="italic text-red-800">(null) 1080p </a>
@@ -197,14 +186,14 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {gotmetadata._video._720p !== undefined ? (
 <a
-  className="italic"
-  href={getVideo(
-    gotmetadata._audio,
-    gotmetadata._search.TITLE,
-    gotmetadata._video._720p
-  )}
+className="italic"
+href={getVideo(
+gotmetadata._audio,
+gotmetadata._search.TITLE,
+gotmetadata._video._720p
+)}
 >
-  720p
+720p
 </a>
 ) : (
 <a className="italic text-red-800">(null) 720p </a>
@@ -212,14 +201,14 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {gotmetadata._video._480p !== undefined ? (
 <a
-  className="italic"
-  href={getVideo(
-    gotmetadata._audio,
-    gotmetadata._search.TITLE,
-    gotmetadata._video._480p
-  )}
+className="italic"
+href={getVideo(
+gotmetadata._audio,
+gotmetadata._search.TITLE,
+gotmetadata._video._480p
+)}
 >
-  480p
+480p
 </a>
 ) : (
 <a className="italic text-red-800">(null) 480p </a>
@@ -227,14 +216,14 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {gotmetadata._video._360p !== undefined ? (
 <a
-  className="italic"
-  href={getVideo(
-    gotmetadata._audio,
-    gotmetadata._search.TITLE,
-    gotmetadata._video._360p
-  )}
+className="italic"
+href={getVideo(
+gotmetadata._audio,
+gotmetadata._search.TITLE,
+gotmetadata._video._360p
+)}
 >
-  360p
+360p
 </a>
 ) : (
 <a className="italic text-red-800">(null) 360p </a>
@@ -242,14 +231,14 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {gotmetadata._video._240p !== undefined ? (
 <a
-  className="italic"
-  href={getVideo(
-    gotmetadata._audio,
-    gotmetadata._search.TITLE,
-    gotmetadata._video._240p
-  )}
+className="italic"
+href={getVideo(
+gotmetadata._audio,
+gotmetadata._search.TITLE,
+gotmetadata._video._240p
+)}
 >
-  240p
+240p
 </a>
 ) : (
 <a className="italic text-red-800">(null) 240p </a>
@@ -257,14 +246,14 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 
 {gotmetadata._video._144p !== undefined ? (
 <a
-  className="italic"
-  href={getVideo(
-    gotmetadata._audio,
-    gotmetadata._search.TITLE,
-    gotmetadata._video._144p
-  )}
+className="italic"
+href={getVideo(
+gotmetadata._audio,
+gotmetadata._search.TITLE,
+gotmetadata._video._144p
+)}
 >
-  144p
+144p
 </a>
 ) : (
 <a className="italic text-red-800">(null) 144p </a>
