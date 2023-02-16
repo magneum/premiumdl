@@ -1,8 +1,10 @@
 {
   "name": "premiumdl",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
+    "backend": "cd backend && yarn install && yarn start",
+    "backenddev": "cd backend && yarn install && yarn dev",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
