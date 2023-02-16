@@ -17,4 +17,5 @@ RUN cd premiumdl
 WORKDIR /premiumdl
 RUN yarn global add spotify-dl spdl-core forever
 RUN rm -f yarn.lock && yarn install 
+RUN yarn build
 CMD [ "yarn", "start" ]
