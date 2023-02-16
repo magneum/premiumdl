@@ -3,7 +3,14 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useTypewriter } from "react-simple-typewriter";
-import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
+import {
+  BsFillCameraVideoFill,
+  BsFillFileMusicFill,
+  BsFillPenFill,
+} from "react-icons/bs";
+import { MdOutlinePermIdentity, MdDateRange } from "react-icons/Md";
+import { GiSixEyes, GiDuration } from "react-icons/Gi";
+import { BiCodeCurly } from "react-icons/Bi";
 
 function getAudio(audio: any, title: any) {
   return `https://tz2k7x-33073.preview.csb.app/audio?audio=${audio}&title=${title}`;
@@ -27,13 +34,13 @@ function YouTube() {
     console.log(gotmetadata);
   };
   var [Lines] = useTypewriter({
-    words: ["YouTube +", "YouTube Audio +", "YouTube Video +"],
+    words: ["YouTube +", "YouTube Audio", "YouTube Video"],
     delaySpeed: 1000,
     loop: true,
   });
 
   return (
-    <section className="h-full items-center w-full px-5 py-12 justify-center flex bg-[#1c1b1b]">
+    <section className="h-full items-center w-full px-5 py-12 justify-center flex bg-gradient-to-tl sm:bg-gradient-to-tr md:bg-gradient-to-tl lg:bg-gradient-to-tl xl:bg-gradient-to-tl from-[#1f1f1f] to-[#271b1a]">
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         {gotmetadata ? (
           <div className="grid gap-10 lg:grid-cols-2">
@@ -49,167 +56,85 @@ function YouTube() {
                   </h1>
                 </motion.div>
               </h5>
-              <hr className="border-gray-400" />
-              <p className="mb-6 max-w-xl mx-auto text-base tracking-wider leading-relaxed text-gray-500 italic">
-                <span className="text-sm font-bold uppercase">
+              <hr className=" border-orange-800 border-2 rounded-2xl" />
+              <p className="mb-6 mt-1 max-w-xl mx-auto font-medium tracking-wider leading-relaxed text-gray-400 italic text-sm">
+                <span className="font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                   Description:{" "}
                 </span>{" "}
                 {gotmetadata._search.DESCRIPTION.toLowerCase()}
+                <hr className=" border-orange-700/30" />
               </p>
+
               <div className="flex space-x-2 sm:space-x-4 pt-2">
-                <svg
-                  fill="none"
-                  stroke="gray"
-                  viewBox="0 0 24 24"
-                  data-darkreader-inline-stroke=""
-                  className="flex-shrink-0 w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  ></path>
-                </svg>
+                <MdOutlinePermIdentity />
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                     Video Id:{" "}
-                    <span className="text-white/50 text-sm italic">
+                    <span className="text-white/50 text-sm italic font-medium">
                       {gotmetadata._search.YT_ID}
                     </span>
                   </p>
                 </div>
               </div>
               <div className="flex space-x-2 sm:space-x-4 pt-2">
-                <svg
-                  fill="none"
-                  stroke="gray"
-                  viewBox="0 0 24 24"
-                  data-darkreader-inline-stroke=""
-                  className="flex-shrink-0 w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  ></path>
-                </svg>
+                <GiSixEyes />
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                     Views:{" "}
-                    <span className="text-white/50 text-sm italic">
+                    <span className="text-white/50 text-sm italic font-medium">
                       {gotmetadata._search.VIEWS}
                     </span>
                   </p>
                 </div>
               </div>
               <div className="flex space-x-2 sm:space-x-4 pt-2">
-                <svg
-                  fill="none"
-                  stroke="gray"
-                  viewBox="0 0 24 24"
-                  data-darkreader-inline-stroke=""
-                  className="flex-shrink-0 w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  ></path>
-                </svg>
+                <MdDateRange />
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                     upload Date:{" "}
-                    <span className="text-white/50 text-sm italic">
+                    <span className="text-white/50 text-sm italic font-medium">
                       {gotmetadata._search.UPLOADED}
                     </span>
                   </p>
                 </div>
               </div>
               <div className="flex space-x-2 sm:space-x-4 pt-2">
-                <svg
-                  fill="none"
-                  stroke="gray"
-                  viewBox="0 0 24 24"
-                  data-darkreader-inline-stroke=""
-                  className="flex-shrink-0 w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  ></path>
-                </svg>
+                <GiDuration />
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                     Duration:{" "}
-                    <span className="text-white/50 text-sm italic">
+                    <span className="text-white/50 text-sm italic font-medium">
                       {gotmetadata._search.DURATION_FULL}
                     </span>
                   </p>
                 </div>
               </div>
               <div className="flex space-x-2 sm:space-x-4 pt-2">
-                <svg
-                  fill="none"
-                  stroke="gray"
-                  viewBox="0 0 24 24"
-                  data-darkreader-inline-stroke=""
-                  className="flex-shrink-0 w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  ></path>
-                </svg>
+                <BsFillPenFill />
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                     Author:{" "}
-                    <span className="text-white/50 text-sm italic">
+                    <span className="text-white/50 text-sm italic font-medium">
                       {gotmetadata._search.AUTHOR_NAME}
                     </span>
                   </p>
                 </div>
               </div>
               <div className="flex space-x-2 sm:space-x-4 pt-2">
-                <svg
-                  fill="none"
-                  stroke="gray"
-                  viewBox="0 0 24 24"
-                  data-darkreader-inline-stroke=""
-                  className="flex-shrink-0 w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  ></path>
-                </svg>
+                <BiCodeCurly />
                 <div className="space-y-0">
                   <p className="sm:text-sm md:text-lg lg:text-1xl xl:text-2xl text-sm font-semibold leading-snug capatilize tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                     Link:{" "}
-                    <span className="text-white/50 text-sm italic">
+                    <span className="text-white/50 text-sm italic font-medium">
                       {gotmetadata._search.LINK}
                     </span>
                   </p>
                 </div>
               </div>
 
+              <br></br>
               <span className="label-text-alt font-bold text-yellow-400">
-                ⚠️ Download wait time depends on video length.<br></br>💡 Be
-                patient best things takes time to happen.
+                ⚠️ Download time depends on video length and quality.
               </span>
               <br></br>
 
@@ -219,10 +144,10 @@ function YouTube() {
                     <div className="dropdown pr-2">
                       <label
                         tabIndex={0}
-                        className="btn btn-ghost bg-lime-900/50 text-xs"
+                        className="btn btn-ghost bg-orange-900 animate-pulse text-xl"
                       >
-                        <BsFillFileMusicFill />{" "}
-                        <span className="text-xs ml-2">audio</span>
+                        <BsFillFileMusicFill />
+                        {/* <span className="text-xs ml-2" >audio</span> */}
                       </label>
                       <ul
                         tabIndex={0}
@@ -245,10 +170,10 @@ function YouTube() {
                     <div className="dropdown pr-3">
                       <label
                         tabIndex={0}
-                        className="btn btn-ghost bg-lime-900/50 text-xs"
+                        className="btn btn-ghost bg-orange-900 animate-pulse text-xl"
                       >
-                        <BsFillCameraVideoFill />{" "}
-                        <span className="text-xs ml-2">video</span>
+                        <BsFillCameraVideoFill />
+                        {/* <span className="text-xs ml-2" >video</span> */}
                       </label>
                       <ul
                         tabIndex={0}
@@ -353,17 +278,17 @@ function YouTube() {
             </div>
 
             <div>
-              <img
-                alt=""
-                src={gotmetadata._search.THUMB}
-                className="rounded-2xl mb-6"
-              />
               <span className="label-text font-bold">
-                <span className="text-xl  uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
+                <span className="text-xl uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500">
                   Title:{" "}
                 </span>{" "}
                 {gotmetadata._search.THUMB}
               </span>
+              <img
+                alt=""
+                src={gotmetadata._search.THUMB}
+                className="rounded-2xl mt-6"
+              />
             </div>
           </div>
         ) : (
