@@ -6,9 +6,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "build": "next build",
-    "start": "next start",
-    "backend": "forever backend.js",
-    "backendev": "nodemon backend.js"
+    "start": "next start"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.0.22-alpha.0",
