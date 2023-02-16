@@ -5,33 +5,33 @@ var ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function search(
-request: NextApiRequest,
-response: NextApiResponse
+  request: NextApiRequest,
+  response: NextApiResponse
 ) {
-try {
-let _title = request.query.title as any;
-var _audio = request.query.qaudio as any;
-let _format = request.query.format as any;
-response.setHeader(
-"Content-disposition",
-contentDisposition(`premiumdl-video-${_format}-${_title}.mp3`)
-);
-ffmpeg(_audio)
-.setFfmpegPath(ffmpegPath)
-.format("mp3")
-.output(response, { end: true })
-.on("error", (e: any) => console.error("ERROR: " + e.message))
-.on("end", () => console.log("INFO: stream sent to client successfully."))
-.on(
-"progresponses",
-async (p: any) => await process(p.progress, "Obtaining" + ": ")
-)
-.run();
-} catch (error: any) {
-console.log(error);
-return response.status(500).json({
-status: "error",
-message: error.mesage,
-});
-}
+  try {
+    let _title = request.query.title as any;
+    var _audio = request.query.qaudio as any;
+    let _format = request.query.format as any;
+    response.setHeader(
+      "Content-disposition",
+      contentDisposition(`premiumdl-video-${_format}-${_title}.mp3`)
+    );
+    ffmpeg(_audio)
+      .setFfmpegPath(ffmpegPath)
+      .format("mp3")
+      .output(response, { end: true })
+      .on("error", (e: any) => console.error("ERROR: " + e.message))
+      .on("end", () => console.log("INFO: stream sent to client successfully."))
+      .on(
+        "progresponses",
+        async (p: any) => await process(p.progress, "Obtaining" + ": ")
+      )
+      .run();
+  } catch (error: any) {
+    console.log(error);
+    return response.status(500).json({
+      status: "error",
+      message: error.mesage,
+    });
+  }
 }
