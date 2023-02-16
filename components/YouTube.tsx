@@ -20,8 +20,12 @@ setLoadingVideo(true);
 setLoadingAudio(true);
 event.preventDefault();
 var _data = await axios.get("/api/search?q=" + urlRef.current.value);
-var _vdata = await axios.get("http://localhost:4000/video?q=" + _data.data._Url);
-var _adata = await axios.get("http://localhost:4000/audio?q=" + _data.data._Url);
+var _vdata = await axios.get(
+"http://localhost:4000/video?q=" + _data.data._Url
+);
+var _adata = await axios.get(
+"http://localhost:4000/audio?q=" + _data.data._Url
+);
 setLoadingVideoData(_vdata.data);
 setLoadingAudioData(_adata.data);
 setUrlResult(_data.data);
@@ -233,9 +237,24 @@ tabIndex={0}
 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 border rounded-lg border-orange-800/50"
 >
 <li tabIndex={0}>
-<a className="justify-between">Medium</a>
-<a className="justify-between">Low</a>
-<a className="justify-between">Lowest</a>
+<a
+className="italic"
+href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData}&format=Medium`}
+>
+Medium
+</a>
+<a
+className="italic"
+href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData}&format=Medium`}
+>
+Low
+</a>
+<a
+className="italic"
+href={`/api/audio?url=${urlResult._Url}&title=${urlResult._Title}&qaudio=${isAudioData}&format=Medium`}
+>
+Lowest
+</a>
 </li>
 </ul>
 </div>
@@ -259,7 +278,7 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 className="italic"
 href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._1080p}&qaudio=${isAudioData}&format=1080p`}
 >
-1080p{" "}
+1080p
 </a>
 ) : (
 <a className="italic">- 1080p </a>
@@ -270,7 +289,7 @@ href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVid
 className="italic"
 href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._720p}&qaudio=${isAudioData}&format=720p`}
 >
-720p{" "}
+720p
 </a>
 ) : (
 <a className="italic">- 720p </a>
@@ -281,7 +300,7 @@ href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVid
 className="italic"
 href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._480p}&qaudio=${isAudioData}&format=480p`}
 >
-480p{" "}
+480p
 </a>
 ) : (
 <a className="italic">- 480p </a>
@@ -292,7 +311,7 @@ href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVid
 className="italic"
 href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._360p}&qaudio=${isAudioData}&format=360p`}
 >
-360p{" "}
+360p
 </a>
 ) : (
 <a className="italic">- 360p </a>
@@ -303,7 +322,7 @@ href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVid
 className="italic"
 href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._240p}&qaudio=${isAudioData}&format=240p`}
 >
-240p{" "}
+240p
 </a>
 ) : (
 <a className="italic">- 240p </a>
@@ -314,7 +333,7 @@ href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVid
 className="italic"
 href={`/api/video?url=${urlResult._Url}&title=${urlResult._Title}&qvideo=${isVideoData._144p}&qaudio=${isAudioData}&format=144p`}
 >
-144p{" "}
+144p
 </a>
 ) : (
 <a className="italic">- 144p </a>
