@@ -21,9 +21,15 @@ setLoadingVideo(true);
 setLoadingAudio(true);
 event.preventDefault();
 var _data = await axios.get("/api/search?q=" + urlRef.current.value);
-var _vdata = await axios.get(`https://tz2k7x-4000.preview.csb.app/video?q=` + _data.data._Url);
-var _adata = await axios.get(`https://tz2k7x-4000.preview.csb.app/audio?q=` + _data.data._Url);
-var _mudata = await axios.get(`https://tz2k7x-4000.preview.csb.app/music?q=` + _data.data._Url);
+var _vdata = await axios.get(
+`https://tz2k7x-4689.preview.csb.app/video?q=` + _data.data._Url
+);
+var _adata = await axios.get(
+`https://tz2k7x-4689.preview.csb.app/audio?q=` + _data.data._Url
+);
+var _mudata = await axios.get(
+`https://tz2k7x-4689.preview.csb.app/music?q=` + _data.data._Url
+);
 setLoadingVideoData(_vdata.data);
 setLoadingAudioData(_adata.data);
 setLoadingMusicData(_mudata.data);
@@ -403,8 +409,17 @@ YouTube Link or Song Name!
 </label>
 
 <form onSubmit={handleSubmit}>
+<input
+required
+type="text"
+ref={urlRef}
+id="hero-field"
+name="hero-field"
+placeholder="required"
+className="w-full rounded bg-stone-900 focus:ring-2 focus:ring-neutral-600 focus:bg-transparent focus:border-orange-500 text-base outline-none text-gray-100 px-2 transition-colors duration-200 ease-in-out"
+></input>
+
 {isLoading ? (
-<div>
 <button
 type="button"
 className="mt-2 bg-stone-800 inline-flex items-center px-4 py-2 text-sm font-semibold leading-6 text-yellow-400 transition duration-150 ease-in-out rounded-md shadow cursor-not-allowed border border-yellow-700"
@@ -437,26 +452,13 @@ Good things need time to happen.
 </span>
 </span>
 </button>
-</div>
 ) : (
-<div>
-<input
-required
-type="text"
-id="hero-field"
-name="hero-field"
-ref={urlRef}
-placeholder="required"
-className="w-full rounded bg-stone-900 focus:ring-2 focus:ring-neutral-600 focus:bg-transparent focus:border-orange-500 text-base outline-none text-gray-100 px-2 transition-colors duration-200 ease-in-out"
-></input>
-
 <button
 type="submit"
 className="mt-2 inline-flex text-white bg-neutral-600 border-0 py-2 px-6 focus:outline-none hover:bg-neutral-700 rounded text-lg"
 >
 Search
 </button>
-</div>
 )}
 </form>
 </div>
