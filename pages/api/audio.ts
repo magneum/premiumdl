@@ -17,8 +17,8 @@ response.setHeader(
 contentDisposition(`premiumdl-video-${_format}-${_title}.mp3`)
 );
 ffmpeg(_audio)
-.format("mp3")
 .setFfmpegPath(ffmpegPath)
+.format("mp3")
 .output(response, { end: true })
 .on("error", (e: any) => console.error("ERROR: " + e.message))
 .on("end", () => console.log("INFO: stream sent to client successfully."))
