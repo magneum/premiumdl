@@ -15,7 +15,7 @@ export default async function search(request: any, response: any) {
     );
     FFmpeg(_audio)
       .setFfmpegPath(FFmpegPath)
-      // .setFfprobePath(FFmpegProbe)
+      .setFfprobePath(FFmpegProbe)
       .format("mp3")
       .output(response, { end: true })
       .on("error", (error: any) => console.error("ERROR: " + error.message))

@@ -15,7 +15,7 @@ export default async function search(request: any, response: any) {
     );
     FFmpeg()
       .setFfmpegPath(FFmpegPath)
-      // .setFfprobePath(FFmpegProbe)
+      .setFfprobePath(FFmpegProbe)
       .addInput(_video)
       .addInput(_audio)
       .outputOptions(["-map 0:v", "-map 1:a", "-shortest", "-c:v copy"])
