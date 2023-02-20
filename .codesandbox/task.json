@@ -1,0 +1,27 @@
+{
+    "setupTasks": [
+        "yarn prep",
+        "yarn build"
+    ],
+    "tasks": {
+        "install-dependencies": {
+            "name": "Install Dependencies",
+            "command": "yarn install"
+        },
+        "start-frontend": {
+            "name": "Run frontend",
+            "command": "yarn build && yarn start",
+            "runAtStart": true
+        },
+        "start-backend": {
+            "name": "Run backend",
+            "command": "yarn pfstart",
+            "runAtStart": true
+        },
+        "start-premiumdl": {
+            "name": "Run Dev Server",
+            "command": "yarn start",
+            "runAtStart": true
+        }
+    }
+}
