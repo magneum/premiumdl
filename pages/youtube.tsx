@@ -13,7 +13,7 @@ function getVideo(audio: any, title: any, video: any) {
 return `https://me3l9y-8001.preview.csb.app/video?video=${video}&audio=${audio}&title=${title}`;
 }
 
-export default function youtube() {
+export default function YOUTUBE() {
 var userInput: any = useRef();
 var [isLoading, setLoading] = useState(false);
 var [isTinyData, setTinyData] = useState<any>();
