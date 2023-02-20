@@ -15,7 +15,10 @@ RUN npm i -g yarn
 RUN git clone --branch render https://github.com/magneum/premiumdl
 RUN cd premiumdl
 WORKDIR /premiumdl
+RUN git init --initial-branch=render && git fetch origin render && git reset --hard origin/render
 RUN yarn global add spotify-dl spdl-core forever
 RUN rm -f yarn.lock && yarn install 
 RUN yarn build
+# EXPOSE 3000
+# EXPOSE 5000
 CMD [ "yarn", "start" ]
