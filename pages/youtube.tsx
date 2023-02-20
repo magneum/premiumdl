@@ -7,10 +7,17 @@ import { useTypewriter } from "react-simple-typewriter";
 import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
 
 function getAudio(audio: any, title: any) {
+<<<<<<< HEAD
 return `https://me3l9y-8001.preview.csb.app/audio?audio=${audio}&title=${title}`;
 }
 function getVideo(audio: any, title: any, video: any) {
 return `https://me3l9y-8001.preview.csb.app/video?video=${video}&audio=${audio}&title=${title}`;
+=======
+return `${process.env.NEXT_URL}/audio?audio=${audio}&title=${title}`;
+}
+function getVideo(audio: any, title: any, video: any) {
+return `${process.env.NEXT_URL}/video?video=${video}&audio=${audio}&title=${title}`;
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 }
 
 export default function youtube() {
@@ -30,9 +37,13 @@ setLoading(false);
 var handleConversion = async (event: any, url: any) => {
 setLoading(true);
 event.preventDefault();
+<<<<<<< HEAD
 var crons = await axios.get(
 `https://me3l9y-8001.preview.csb.app/metadata?q=${url}`
 );
+=======
+var crons = await axios.get(`${process.env.NEXT_URL}/metadata?q=${url}`);
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 setTinyData(crons.data);
 setLoading(false);
 };
@@ -175,8 +186,13 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 <a
 className="italic"
 href={getAudio(
+<<<<<<< HEAD
 isTinyData._audio,
 isSearchData.TITLE
+=======
+  isTinyData._audio,
+  isSearchData.TITLE
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 )}
 >
 best available
@@ -200,6 +216,7 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 <li tabIndex={0}>
 {isTinyData._video._1080p !== undefined ? (
 <a
+<<<<<<< HEAD
 className="italic"
 href={getVideo(
 isTinyData._audio,
@@ -212,11 +229,26 @@ isTinyData._video._1080p
 ) : (
 <a className="italic text-red-800">
 (null) 1080p{" "}
+=======
+  className="italic"
+  href={getVideo(
+    isTinyData._audio,
+    isSearchData.TITLE,
+    isTinyData._video._1080p
+  )}
+>
+  1080p
+</a>
+) : (
+<a className="italic text-red-800">
+  (null) 1080p{" "}
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 </a>
 )}
 
 {isTinyData._video._720p !== undefined ? (
 <a
+<<<<<<< HEAD
 className="italic"
 href={getVideo(
 isTinyData._audio,
@@ -229,11 +261,26 @@ isTinyData._video._720p
 ) : (
 <a className="italic text-red-800">
 (null) 720p{" "}
+=======
+  className="italic"
+  href={getVideo(
+    isTinyData._audio,
+    isSearchData.TITLE,
+    isTinyData._video._720p
+  )}
+>
+  720p
+</a>
+) : (
+<a className="italic text-red-800">
+  (null) 720p{" "}
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 </a>
 )}
 
 {isTinyData._video._480p !== undefined ? (
 <a
+<<<<<<< HEAD
 className="italic"
 href={getVideo(
 isTinyData._audio,
@@ -246,11 +293,26 @@ isTinyData._video._480p
 ) : (
 <a className="italic text-red-800">
 (null) 480p{" "}
+=======
+  className="italic"
+  href={getVideo(
+    isTinyData._audio,
+    isSearchData.TITLE,
+    isTinyData._video._480p
+  )}
+>
+  480p
+</a>
+) : (
+<a className="italic text-red-800">
+  (null) 480p{" "}
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 </a>
 )}
 
 {isTinyData._video._360p !== undefined ? (
 <a
+<<<<<<< HEAD
 className="italic"
 href={getVideo(
 isTinyData._audio,
@@ -263,11 +325,26 @@ isTinyData._video._360p
 ) : (
 <a className="italic text-red-800">
 (null) 360p{" "}
+=======
+  className="italic"
+  href={getVideo(
+    isTinyData._audio,
+    isSearchData.TITLE,
+    isTinyData._video._360p
+  )}
+>
+  360p
+</a>
+) : (
+<a className="italic text-red-800">
+  (null) 360p{" "}
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 </a>
 )}
 
 {isTinyData._video._240p !== undefined ? (
 <a
+<<<<<<< HEAD
 className="italic"
 href={getVideo(
 isTinyData._audio,
@@ -280,11 +357,26 @@ isTinyData._video._240p
 ) : (
 <a className="italic text-red-800">
 (null) 240p{" "}
+=======
+  className="italic"
+  href={getVideo(
+    isTinyData._audio,
+    isSearchData.TITLE,
+    isTinyData._video._240p
+  )}
+>
+  240p
+</a>
+) : (
+<a className="italic text-red-800">
+  (null) 240p{" "}
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 </a>
 )}
 
 {isTinyData._video._144p !== undefined ? (
 <a
+<<<<<<< HEAD
 className="italic"
 href={getVideo(
 isTinyData._audio,
@@ -297,6 +389,20 @@ isTinyData._video._144p
 ) : (
 <a className="italic text-red-800">
 (null) 144p{" "}
+=======
+  className="italic"
+  href={getVideo(
+    isTinyData._audio,
+    isSearchData.TITLE,
+    isTinyData._video._144p
+  )}
+>
+  144p
+</a>
+) : (
+<a className="italic text-red-800">
+  (null) 144p{" "}
+>>>>>>> 9692127fc506cb597283c13a4db0c0db607c2231
 </a>
 )}
 </li>
