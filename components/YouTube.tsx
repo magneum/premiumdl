@@ -6,10 +6,12 @@ import { useTypewriter } from "react-simple-typewriter";
 import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
 
 function getAudio(audio: any, title: any) {
-  return `/api/audio?audio=${audio}&title=${title}`;
+return `https://tz2k7x-33073.preview.csb.app/audio?audio=${audio}&title=${title}`;
+// return `/api/audio?audio=${audio}&title=${title}`;
 }
 function getVideo(audio: any, title: any, video: any) {
-  return `/api/video?video=${video}&audio=${audio}&title=${title}`;
+return `https://tz2k7x-33073.preview.csb.app/video?video=${video}&audio=${audio}&title=${title}`;
+// return `/api/video?video=${video}&audio=${audio}&title=${title}`;
 }
 
 function YouTube() {
