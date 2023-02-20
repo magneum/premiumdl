@@ -7,19 +7,14 @@ import { useTypewriter } from "react-simple-typewriter";
 import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
 
 function getAudio(audio: any, title: any) {
-  return `${process.env.NEXT_URL}/audio?audio=${audio}&title=${title}`;
+  return `http://localhost:8001/audio?audio=${audio}&title=${title}`;
 }
 function getVideo(audio: any, title: any, video: any) {
-  return `${process.env.NEXT_URL}/video?video=${video}&audio=${audio}&title=${title}`;
-}
-
-function getSearch(q: any) {
-  return `/api/search?q=${q}`;
+  return `http://localhost:8001/video?video=${video}&audio=${audio}&title=${title}`;
 }
 
 export default function confirm() {
   var userInput: any = useRef();
-  var [isaudio, setAudio] = useState<any>();
   var [isLoading, setLoading] = useState(false);
   var [isTinyData, setTinyData] = useState<any>();
   var [isSearchData, setSearchData] = useState<any>();
@@ -27,17 +22,15 @@ export default function confirm() {
   var handleSubmit = async (event: any) => {
     setLoading(true);
     event.preventDefault();
-    var crons = await axios.get(getSearch(userInput.current.value));
+    var crons = await axios.get(`/api/search?q=${userInput.current.value}`);
     setSearchData(crons.data);
     setLoading(false);
   };
 
-  var handleConversion = async (event: any, urlSong: any) => {
+  var handleConversion = async (event: any, url: any) => {
     setLoading(true);
     event.preventDefault();
-    var crons = await axios.get(
-      `${process.env.NEXT_URL}/metadata?q=${urlSong}`
-    );
+    var crons = await axios.get(`http://localhost:8001/metadata?q=${url}`);
     setTinyData(crons.data);
     setLoading(false);
   };
@@ -190,6 +183,7 @@ export default function confirm() {
                         </ul>
                       </div>
                       <br></br>
+
                       <div className="dropdown pr-3">
                         <label
                           tabIndex={0}
