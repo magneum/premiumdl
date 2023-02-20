@@ -7,13 +7,13 @@
     "yarn": ">= 1.22.19"
   },
   "scripts": {
+    "prep": "yarn",
     "dev": "next dev",
     "lint": "next lint",
     "build": "next build",
     "start": "next start",
-    "prep": "yarn install",
-    "pfdev": "nodemon pfmpeg.js",
-    "pfstart": "forever pfmpeg.js",
+    "pfmpegdev": "nodemon pfmpeg.js",
+    "pfmpegstart": "forever pfmpeg.js",
     "magdev": "concurrently --kill-others \"yarn dev\" \"yarn backdev\"",
     "magstart": "concurrently --kill-others \"yarn start\" \"yarn backstart\""
   },
