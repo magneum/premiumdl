@@ -1,11 +1,11 @@
 //===========================================================================================================
 // http://localhost:9786/metadata?q=emptiness
-// http://localhost:9786/audio?audio=https://tinyurl.com/2hc267ac&title=Hello
-// http://localhost:9786/video?video=https://tinyurl.com/2fctrtsm&audio=https://tinyurl.com/2hc267ac&title=Hello
+// http://localhost:9786/audio?audio=https://tinyurl.com/2fzw596d&title=Hello
+// http://localhost:9786/video?video=https://tinyurl.com/2dracs26&audio=https://tinyurl.com/2fzw596d&title=Hello
 
-// https://tz2k7x-33073.preview.csb.app/metadata?q=emptiness
-// https://tz2k7x-33073.preview.csb.app/audio?audio=https://tinyurl.com/2hc267ac&title=Hello
-// https://tz2k7x-33073.preview.csb.app/video?video=https://tinyurl.com/2fctrtsm&audio=https://tinyurl.com/2hc267ac&title=Hello
+// https://fl062n-8080.preview.csb.app/metadata?q=emptiness
+// https://fl062n-8080.preview.csb.app/audio?audio=https://tinyurl.com/2fzw596d&title=Hello
+// https://fl062n-8080.preview.csb.app/video?video=https://tinyurl.com/2dracs26&audio=https://tinyurl.com/2fzw596d&title=Hello
 //===========================================================================================================
 require("dotenv").config();
 var cors = require("cors");
@@ -17,7 +17,7 @@ var FFmpeg = require("fluent-ffmpeg");
 var YouTube_Sr = require("yt-search");
 var youtubedl = require("youtube-dl-exec");
 var progress = require("progress-estimator")();
-var port = process.env.PORT || process.env.port;
+var PFPort = process.env.PFPort || process.env.PFPort;
 var contentDisposition = require("content-disposition");
 var FFmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 var FFmpegProbe = require("@ffprobe-installer/ffprobe").path;
@@ -45,7 +45,7 @@ var spin = new Spinnies();
 spin.add("premiumdl", { text: "Blackmagik Server Started" });
 app.use(cors());
 app.use(express.json());
-app.listen(port, () => console.log("bit.ly/premiumdl :: " + port));
+app.listen(PFPort, () => console.log("bit.ly/premiumdl :: " + PFPort));
 app.get("/", (request, response) => {
   return response.send("bit.ly/premiumdl");
 });
