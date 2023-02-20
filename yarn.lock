@@ -5510,6 +5510,16 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
+youtube-dl-exec@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/youtube-dl-exec/-/youtube-dl-exec-2.2.3.tgz#edd310b1efc9ead35d6158cbe3ba60ddf7b6cb92"
+  integrity sha512-OiyKsd2jMT9MxzYJUO10DUAglJVDnFk7u2MubpxR1DtWzmBYsNaAVch7ELOlKyh07iPdvqDzDZVyEokfC95O6g==
+  dependencies:
+    dargs "~7.0.0"
+    execa "~5.1.0"
+    is-unix "~2.0.1"
+    simple-get "~4.0.1"
+
 yt-search@^2.10.4:
   version "2.10.4"
   resolved "https://registry.yarnpkg.com/yt-search/-/yt-search-2.10.4.tgz#cb2718c4235b0e4bf61a9b00b87bd57dec1bfcf8"
