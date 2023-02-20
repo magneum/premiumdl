@@ -19,6 +19,5 @@ RUN git init --initial-branch=render && git fetch origin render && git reset --h
 RUN yarn global add spotify-dl spdl-core forever
 RUN rm -f yarn.lock && yarn install 
 RUN yarn build
-# EXPOSE 3000
-# EXPOSE 5000
+EXPOSE 3000
 CMD [ "yarn", "start" ]
