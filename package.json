@@ -6,7 +6,9 @@
     "dev": "next dev",
     "lint": "next lint",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "backdev": "nodemon pfmpeg.js",
+    "backstart": "forever pfmpeg.js"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.0.22-alpha.0",
