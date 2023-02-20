@@ -1,11 +1,7 @@
 //===========================================================================================================
 // http://localhost:9786/metadata?q=emptiness
 // http://localhost:9786/audio?audio=https://tinyurl.com/2fzw596d&title=Hello
-// http://localhost:9786/video?video=https://tinyurl.com/2dracs26&audio=https://tinyurl.com/2fzw596d&title=Hello
-
-// https://fl062n-8080.preview.csb.app/metadata?q=emptiness
-// https://fl062n-8080.preview.csb.app/audio?audio=https://tinyurl.com/2fzw596d&title=Hello
-// https://fl062n-8080.preview.csb.app/video?video=https://tinyurl.com/2dracs26&audio=https://tinyurl.com/2fzw596d&title=Hello
+// http://localhost:9786/video?video=https://tinyurl.com/2dracs26&audio=https://tinyurl.com/2fzw596d&title=premiumdl
 //===========================================================================================================
 require("dotenv").config();
 var cors = require("cors");
