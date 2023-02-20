@@ -17,6 +17,7 @@ RUN cd premiumdl
 WORKDIR /premiumdl
 RUN git init --initial-branch=render && git fetch origin render && git reset --hard origin/render
 RUN yarn global add spotify-dl spdl-core forever
+RUN pip3 install -r requirements.txt
 RUN rm -f yarn.lock && yarn install 
 RUN yarn build
 EXPOSE 3000

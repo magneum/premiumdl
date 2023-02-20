@@ -4,7 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+yt-dlp = "*"
 youtube-dl = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.11.2"
