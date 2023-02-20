@@ -6,11 +6,11 @@ import { useTypewriter } from "react-simple-typewriter";
 import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
 
 function getAudio(audio: any, title: any) {
-return `https://tz2k7x-33073.preview.csb.app/audio?audio=${audio}&title=${title}`;
+return `https://fl062n-8080.preview.csb.app/audio?audio=${audio}&title=${title}`;
 // return `/api/audio?audio=${audio}&title=${title}`;
 }
 function getVideo(audio: any, title: any, video: any) {
-return `https://tz2k7x-33073.preview.csb.app/video?video=${video}&audio=${audio}&title=${title}`;
+return `https://fl062n-8080.preview.csb.app/video?video=${video}&audio=${audio}&title=${title}`;
 // return `/api/video?video=${video}&audio=${audio}&title=${title}`;
 }
 
@@ -22,7 +22,7 @@ var handleSubmit = async (event: any) => {
 event.preventDefault();
 setLoading(true);
 var _got = await axios.get(
-`https://tz2k7x-33073.preview.csb.app/metadata?q=${userInput.current.value}`
+`https://fl062n-8080.preview.csb.app/metadata?q=${userInput.current.value}`
 );
 setmetaData(_got.data);
 console.log(_got.data);
