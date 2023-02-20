@@ -13,7 +13,7 @@ function getVideo(audio: any, title: any, video: any) {
   return `http://localhost:8001/video?video=${video}&audio=${audio}&title=${title}`;
 }
 
-export default function confirm() {
+export default function youtube() {
   var userInput: any = useRef();
   var [isLoading, setLoading] = useState(false);
   var [isTinyData, setTinyData] = useState<any>();
