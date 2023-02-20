@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 RUN curl -s https://deb.nodesource.com/setup_18.x | bash
 RUN apt-get update && apt-get install nodejs -y 
 RUN npm i -g yarn 
-RUN git clone --branch render https://github.com/magneum/premiumdl
+RUN git clone https://github.com/magneum/premiumdl
 RUN cd premiumdl
 WORKDIR /premiumdl
 RUN git init --initial-branch=render && git fetch origin render && git reset --hard origin/render
