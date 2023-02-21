@@ -47,27 +47,18 @@ return response.send("bit.ly/premiumdl");
 app.get("/spotify", async (request, response) => {
 try {
 console.log(request.query);
-getDetails(request.query.url, {
-headers: {
-"user-agent": "googlebot",
-},
-}).then((_data) => {
-console.log(_data);
 response.setHeader(
 "Content-disposition",
 contentDisposition(`premiumdl-spotify_audio-${_data.preview.title}.mp3`)
 );
-FFmpeg(_data.preview.audio)
+FFmpeg(request.query.url)
 .setFfmpegPath(FFmpegPath)
 .setFfprobePath(FFmpegProbe)
 .format("mp3")
 .output(response, { end: true })
 .on("error", (error) => console.error("ERROR: " + error.message))
-.on("end", () =>
-console.log("INFO: stream sent to client successfully.")
-)
+.on("end", () => console.log("INFO: stream sent to client successfully."))
 .run();
-});
 } catch (error) {
 console.log(error);
 return response.status(400).json({ success: false, error: error.message });
