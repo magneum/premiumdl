@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import { useRef, useState, useEffect } from "react";
-import { BsFillFileMusicFill } from "react-icons/bs";
 import { useTypewriter } from "react-simple-typewriter";
 import Image from "next/image";
 
@@ -129,7 +128,7 @@ Link:{" "}
 tabIndex={0}
 className="btn btn-ghost btn-wide bg-lime-900 animate-pulse text-xl"
 >
-<BsFillFileMusicFill />
+🎵
 </label>
 <ul
 tabIndex={0}

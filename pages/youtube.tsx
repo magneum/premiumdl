@@ -1,12 +1,11 @@
 import React from "react";
 import axios from "axios";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import Header from "../components/Header";
 import { useTypewriter } from "react-simple-typewriter";
-import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
-import Image from "next/image";
 
 function getAudio(audio: any, title: any) {
   return `https://me3l9y-3003.preview.csb.app/audio?audio=${audio}&title=${title}`;
@@ -176,7 +175,7 @@ export default function YOUTUBE() {
                           tabIndex={0}
                           className="btn btn-ghost bg-orange-900 animate-pulse text-xl"
                         >
-                          <BsFillFileMusicFill />
+                          🎵
                         </label>
                         <ul
                           tabIndex={0}
@@ -202,7 +201,7 @@ export default function YOUTUBE() {
                           tabIndex={0}
                           className="btn btn-ghost bg-orange-900 animate-pulse text-xl"
                         >
-                          <BsFillCameraVideoFill />
+                          📷
                         </label>
                         <ul
                           tabIndex={0}
