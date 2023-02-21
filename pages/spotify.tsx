@@ -18,7 +18,7 @@ export default function SPOTIFY() {
   var handleSubmit = async (event: any) => {
     setLoading(true);
     event.preventDefault();
-    var crons = await axios.get(`/api/spotmeta?url=${userInput.current.value}`);
+    var crons = await axios.get(`/api/spotmeta?q=${userInput.current.value}`);
     setSearchData(crons.data);
     setLoading(false);
   };
