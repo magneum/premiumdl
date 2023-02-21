@@ -46,12 +46,12 @@ return response.send("bit.ly/premiumdl");
 // ==============================================================================================
 app.get("/spotify", async (request, response) => {
 try {
+let _ALINK;
+let _DROP;
 console.log(request.query);
 YouTube_Sr(request.query.title).then(async (_sdata) => {
 let QueryFound = _sdata.videos.slice(0, 1);
 QueryFound.forEach(async function (Qresponse) {
-let _ALINK;
-let _DROP;
 try {
 _DROP = youtubedl(Qresponse.title, {
 noWarnings: true,
@@ -70,6 +70,7 @@ addHeader: ["referer:youtube.com", "user-agent:googlebot"],
 });
 }
 var YouGhost = await progress(_DROP, "Obtaining: " + " ");
+console.log(_ALINK);
 // =========================================================
 var a_ultralow = YouGhost.formats.filter(
 (v) => v.format_id === "599" || v.format_id === "600"
