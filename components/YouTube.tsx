@@ -121,7 +121,7 @@ function YouTube() {
           <div>
             <img
               className="object-cover w-full h-56 rounded-xl sm:h-96"
-              src="/spotify.gif"
+              src="/Spotify.gif"
               alt=""
             />
           </div>

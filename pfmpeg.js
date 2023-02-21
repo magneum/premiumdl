@@ -7,9 +7,11 @@ var Tube = require("tube-exec");
 var Spinnies = require("spinnies");
 var FFmpeg = require("fluent-ffmpeg");
 var YouTube_Sr = require("yt-search");
+var fetch = require("isomorphic-unfetch");
 var youtubedl = require("youtube-dl-exec");
 var progress = require("progress-estimator")();
 var PFPORT = process.env.PFPORT || process.env.pfport;
+var { getDetails } = require("spotify-url-info")(fetch);
 var contentDisposition = require("content-disposition");
 var FFmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 var FFmpegProbe = require("@ffprobe-installer/ffprobe").path;
@@ -40,6 +42,36 @@ app.use(express.json());
 app.listen(PFPORT, () => console.log("bit.ly/premiumdl :: " + PFPORT));
 app.get("/", (request, response) => {
 return response.send("bit.ly/premiumdl");
+});
+// ===========================================================================================================
+app.get("/spotify", async (request, response) => {
+try {
+console.log(request.query);
+getDetails(request.query.url, {
+headers: {
+"user-agent": "googlebot",
+},
+}).then((_data) => {
+console.log(_data);
+response.setHeader(
+"Content-disposition",
+contentDisposition(`premiumdl-spotify_audio-${_data.preview.title}.mp3`)
+);
+FFmpeg(_data.preview.audio)
+.setFfmpegPath(FFmpegPath)
+.setFfprobePath(FFmpegProbe)
+.format("mp3")
+.output(response, { end: true })
+.on("error", (error) => console.error("ERROR: " + error.message))
+.on("end", () =>
+console.log("INFO: stream sent to client successfully.")
+)
+.run();
+});
+} catch (error) {
+console.log(error);
+return response.status(400).json({ success: false, error: error.message });
+}
 });
 // ===========================================================================================================
 app.get("/video", async (request, response) => {

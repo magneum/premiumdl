@@ -310,9 +310,9 @@ type="button"
 data-te-ripple-init
 data-te-ripple-color="light"
 onClick={(e) => handleConversion(e, isSearchData.LINK)}
-className="flex items-center rounded bg-orange-400 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-orange-700 hover:shadow-lg focus:bg-orange-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-800 active:shadow-lg mt-4"
+className="flex items-center rounded bg-orange-400 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg mt-4"
 >
-Start Conversion
+{isLoading && isTinyData ? null : "Start Conversion"}
 </button>
 )}
 </div>
