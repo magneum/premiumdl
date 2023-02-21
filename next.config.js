@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["user-images.githubusercontent.com", "i.ytimg.com"],
+    domains: [
+      "user-images.githubusercontent.com",
+      "cdn.myanimelist.net",
+      "i.ytimg.com",
+    ],
   },
   reactStrictMode: true,
 };

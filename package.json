@@ -45,6 +45,7 @@
     "got": "^11.0.0",
     "human-readable": "^0.2.1",
     "isomorphic-unfetch": "^4.0.2",
+    "mal-scraper": "^2.11.4",
     "next": "13.1.6",
     "path": "^0.12.7",
     "play-dl": "*",
