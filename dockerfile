@@ -21,4 +21,5 @@ RUN pip3 install -r requirements.txt
 RUN rm -f yarn.lock && yarn install 
 RUN yarn build
 EXPOSE 3000
+EXPOSE 3003
 CMD [ "yarn", "start" ]

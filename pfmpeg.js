@@ -10,11 +10,11 @@ var YouTube_Sr = require("yt-search");
 var fetch = require("isomorphic-unfetch");
 var youtubedl = require("youtube-dl-exec");
 var progress = require("progress-estimator")();
-var PFPORT = process.env.PFPORT || process.env.pfport;
 var { getDetails } = require("spotify-url-info")(fetch);
 var contentDisposition = require("content-disposition");
 var FFmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 var FFmpegProbe = require("@ffprobe-installer/ffprobe").path;
+var PFPORT = process.env.PFPORT || process.env.pfport || 3003;
 //===========================================================================================================
 function shrink(url) {
   return new Promise((resolve, reject) => {
