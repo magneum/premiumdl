@@ -10,8 +10,8 @@
     "start": "next start",
     "pfmpegdev": "nodemon pfmpeg.js",
     "pfmpegstart": "forever pfmpeg.js",
-    "magdev": "concurrently --kill-others \"yarn dev\" \"yarn backdev\"",
-    "magstart": "concurrently --kill-others \"yarn start\" \"yarn backstart\""
+    "magdev": "concurrently --kill-others \"yarn dev\" \"yarn pfmpegdev\"",
+    "magstart": "concurrently --kill-others \"yarn start\" \"yarn pfmpegstart\""
   },
   "dependencies": {
     "@bochilteam/scraper": "*",
