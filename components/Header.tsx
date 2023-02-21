@@ -14,7 +14,7 @@ var _color = [
 ];
 var _colorI = _color[Math.floor(Math.random() * _color.length)];
 return (
-<header className="sticky top-0 p-5 flex items-center justify-center max-w-7xl mx-auto bg-neutral-900 rounded-t rounded-xl">
+<header className="sticky top-0 p-5 flex items-center justify-center max-w-full mx-auto bg-neutral-900 rounded-t rounded-xl">
 <Image
 width={100} height={100}
 className={`h-14 w-full rounded-lg ${_colorI}`}

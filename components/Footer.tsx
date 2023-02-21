@@ -15,7 +15,7 @@ return (
 Footer
 </h2>
 
-<div className="px-4 py-12 mx-auto bg-neutral-900 max-w-7xl sm:px-6 lg:px-16 rounded-lg">
+<div className="px-4 py-12 max-w-full bg-neutral-900 sm:px-6 lg:px-16 rounded-lg">
 <div className="flex flex-wrap items-baseline lg:justify-center">
 <span className="mt-2 text-sm font-bold text-gray-500">
 Copyright &copy; 2020 - {new Date().getFullYear()}

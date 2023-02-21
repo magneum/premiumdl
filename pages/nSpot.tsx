@@ -14,7 +14,7 @@ loop: true,
 });
 
 return (
-<div className="bg-[#121112] text-white h-screen snap-y snap-mandatory overflow-scroll z-0 font-serif">
+<div className="bg-[#121112] text-white h-screen snap-y snap-mandatory overflow-scroll z-0">
 <Header />
 <div className="h-screen w-screen bg-[#121112] flex items-center">
 <div className="container flex flex-col md:flex-row items-center justify-between px-5 text-white">

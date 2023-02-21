@@ -55,7 +55,7 @@ loop: true,
 });
 
 return (
-<div className="bg-[#1c1b1b] text-white h-screen snap-y snap-mandatory overflow-scroll z-0 font-serif">
+<div className="bg-[#1c1b1b] text-white h-screen snap-y snap-mandatory overflow-scroll z-0">
 <Header />
 
 {isSearchData ? (

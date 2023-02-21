@@ -43,7 +43,7 @@ loop: true,
 });
 
 return (
-<div className="bg-[#1c1b1b] text-white h-screen snap-y snap-mandatory overflow-scroll z-0 font-serif">
+<div className="bg-[#1c1b1b] text-white h-screen snap-y snap-mandatory overflow-scroll z-0">
 <Header />
 
 {isSearchData ? (
@@ -254,7 +254,7 @@ Search
 <Image
 width={100} height={100}
 className="object-cover w-full h-56 rounded sm:h-96 hue-rotate-90"
-src="https://i.pinimg.com/originals/f8/8a/ca/f88acab7ffd127b4465659500aa0538f.gif"
+src="/geomat.gif"
 alt=""
 />
 </div>
