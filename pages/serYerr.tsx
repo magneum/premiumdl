@@ -3,7 +3,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { BiErrorCircle } from "react-icons/Bi";
 import { useTypewriter } from "react-simple-typewriter";
 
 export default function SPOTIFY() {
@@ -25,7 +24,7 @@ transition={{ duration: 1 }}
 >
 <div className="inline-flex rounded-full bg-red-900 p-6 animate-spin">
 <div className="rounded-full stroke-red-800 bg-red-700 p-8 text-7xl animate-pulse">
-<BiErrorCircle />
+⚠️
 </div>
 </div>
 </motion.div>

@@ -1,10 +1,10 @@
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useTypewriter } from "react-simple-typewriter";
-import Link from "next/link";
-import Image from "next/image";
 
 export default function SPOTIFY() {
 var [Lines] = useTypewriter({
