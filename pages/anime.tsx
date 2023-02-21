@@ -322,7 +322,9 @@ staffs
 </div>
 
 <div>
-<img
+<Image
+width={900}
+height={900}
 className="object-cover w-full h-56 rounded shadow-2xl shadow-black sm:h-96"
 src={isSearchData._image}
 alt=""
