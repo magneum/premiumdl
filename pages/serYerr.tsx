@@ -24,7 +24,7 @@ transition={{ duration: 1 }}
 >
 <div className="inline-flex rounded-full bg-red-900 p-6 animate-spin">
 <div className="rounded-full stroke-red-800 bg-red-700 p-8 text-7xl animate-pulse">
-⚠️
+
 </div>
 </div>
 </motion.div>
