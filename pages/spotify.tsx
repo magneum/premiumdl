@@ -7,7 +7,7 @@ import { BsFillFileMusicFill } from "react-icons/bs";
 import { useTypewriter } from "react-simple-typewriter";
 
 function getAudio(audio: any, title: any) {
-return `https://k0h518-8001.preview.csb.app/spotify?url=${audio}&title=${title}`;
+return `https://me3l9y-3003.preview.csb.app/spotify?url=${audio}&title=${title}`;
 }
 
 export default function SPOTIFY() {

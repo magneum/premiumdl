@@ -7,10 +7,10 @@ import { useTypewriter } from "react-simple-typewriter";
 import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
 
 function getAudio(audio: any, title: any) {
-return `https://me3l9y-8001.preview.csb.app/audio?audio=${audio}&title=${title}`;
+return `https://me3l9y-3003.preview.csb.app/audio?audio=${audio}&title=${title}`;
 }
 function getVideo(audio: any, title: any, video: any) {
-return `https://me3l9y-8001.preview.csb.app/video?video=${video}&audio=${audio}&title=${title}`;
+return `https://me3l9y-3003.preview.csb.app/video?video=${video}&audio=${audio}&title=${title}`;
 }
 
 export default function YOUTUBE() {
@@ -31,7 +31,7 @@ var handleConversion = async (event: any, url: any) => {
 setLoading(true);
 event.preventDefault();
 var crons = await axios.get(
-`https://me3l9y-8001.preview.csb.app/metadata?q=${url}`
+`https://me3l9y-3003.preview.csb.app/metadata?q=${url}`
 );
 setTinyData(crons.data);
 setLoading(false);
