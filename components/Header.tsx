@@ -16,9 +16,10 @@ var _colorI = _color[Math.floor(Math.random() * _color.length)];
 return (
 <header className="sticky top-0 p-5 flex items-center justify-center max-w-7xl mx-auto bg-neutral-900 rounded-t rounded-xl">
 <Image
+width={100} height={100}
 className={`h-14 w-full rounded-lg ${_colorI}`}
 alt="hero"
-src="https://music.school/templates/school/images/dist/Sound_wave_preloader.gif"
+src="/Sound.gif"
 />
 <motion.div
 initial={{ x: -200, opacity: 0, scale: 1 }}

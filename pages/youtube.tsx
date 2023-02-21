@@ -329,6 +329,7 @@ className="flex items-center rounded bg-orange-400 px-6 pt-2.5 pb-2 text-xs font
 </div>
 <div>
 <Image
+width={900} height={900}
 className="object-cover w-full h-56 rounded-xl sm:h-96 mt-10"
 src={isSearchData.THUMB}
 alt=""
@@ -427,8 +428,9 @@ Search
 </div>
 <div>
 <Image
+width={100} height={100}
 className="object-cover w-full h-56 rounded sm:h-96"
-src="https://i.pinimg.com/originals/f8/8a/ca/f88acab7ffd127b4465659500aa0538f.gif"
+src="/geomat.gif"
 alt=""
 />
 </div>

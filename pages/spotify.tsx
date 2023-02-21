@@ -154,6 +154,7 @@ best available
 </div>
 <div>
 <Image
+width={100} height={100}
 className="object-cover w-full h-56 rounded-xl sm:h-96 mt-10"
 src={isSearchData._thumbnail}
 alt=""
@@ -251,6 +252,7 @@ Search
 </div>
 <div>
 <Image
+width={100} height={100}
 className="object-cover w-full h-56 rounded sm:h-96 hue-rotate-90"
 src="https://i.pinimg.com/originals/f8/8a/ca/f88acab7ffd127b4465659500aa0538f.gif"
 alt=""

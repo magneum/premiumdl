@@ -48,6 +48,7 @@ Back to homepage
 </div>
 <div className="w-full lg:flex lg:justify-end lg:w-1/2 mx-5 my-12">
 <Image
+width={900} height={900}
 src="https://user-images.githubusercontent.com/43953425/166269493-acd08ccb-4df3-4474-95c7-ad1034d3c070.svg"
 className="hue-rotate-180"
 alt="Page not found"

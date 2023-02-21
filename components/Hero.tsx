@@ -49,9 +49,10 @@ are shown in the page.
 <section id="intro">
 <div className="flex flex-col items-center justify-center pt-24 mx-auto rounded-lg lg:px-10 max-w-7xl">
 <Image
+width={100} height={100}
 className="object-cover object-center w-full rounded-xl"
 alt="hero"
-src="https://music.school/templates/school/images/dist/Sound_wave_preloader.gif"
+src="/Sound.gif"
 />
 </div>
 </section>

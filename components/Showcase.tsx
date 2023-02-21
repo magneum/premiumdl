@@ -55,6 +55,7 @@ YouTube Converter
 </div>
 <div>
 <Image
+width={100} height={100}
 className="object-cover w-full h-56 rounded-xl sm:h-96"
 src="/youtube.gif"
 alt=""
@@ -96,6 +97,7 @@ Spotify Converter
 </div>
 <div>
 <Image
+width={100} height={100}
 className="object-cover w-full h-56 rounded-xl sm:h-96"
 src="/Spotify.gif"
 alt=""
