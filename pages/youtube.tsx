@@ -213,9 +213,9 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 <a
 className="italic"
 href={getVideo(
-  isTinyData._audio,
-  isSearchData.TITLE,
-  isTinyData._video._1080p
+isTinyData._audio,
+isSearchData.TITLE,
+isTinyData._video._1080p
 )}
 >
 1080p
@@ -230,9 +230,9 @@ href={getVideo(
 <a
 className="italic"
 href={getVideo(
-  isTinyData._audio,
-  isSearchData.TITLE,
-  isTinyData._video._720p
+isTinyData._audio,
+isSearchData.TITLE,
+isTinyData._video._720p
 )}
 >
 720p
@@ -247,9 +247,9 @@ href={getVideo(
 <a
 className="italic"
 href={getVideo(
-  isTinyData._audio,
-  isSearchData.TITLE,
-  isTinyData._video._480p
+isTinyData._audio,
+isSearchData.TITLE,
+isTinyData._video._480p
 )}
 >
 480p
@@ -264,9 +264,9 @@ href={getVideo(
 <a
 className="italic"
 href={getVideo(
-  isTinyData._audio,
-  isSearchData.TITLE,
-  isTinyData._video._360p
+isTinyData._audio,
+isSearchData.TITLE,
+isTinyData._video._360p
 )}
 >
 360p
@@ -281,9 +281,9 @@ href={getVideo(
 <a
 className="italic"
 href={getVideo(
-  isTinyData._audio,
-  isSearchData.TITLE,
-  isTinyData._video._240p
+isTinyData._audio,
+isSearchData.TITLE,
+isTinyData._video._240p
 )}
 >
 240p
@@ -298,9 +298,9 @@ href={getVideo(
 <a
 className="italic"
 href={getVideo(
-  isTinyData._audio,
-  isSearchData.TITLE,
-  isTinyData._video._144p
+isTinyData._audio,
+isSearchData.TITLE,
+isTinyData._video._144p
 )}
 >
 144p
