@@ -49,7 +49,7 @@ try {
 console.log(request.query);
 response.setHeader(
 "Content-disposition",
-contentDisposition(`premiumdl-spotify_audio-${_data.preview.title}.mp3`)
+contentDisposition(`premiumdl-spotify_audio-${request.query.title}.mp3`)
 );
 FFmpeg(request.query.url)
 .setFfmpegPath(FFmpegPath)

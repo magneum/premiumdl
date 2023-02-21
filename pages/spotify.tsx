@@ -6,8 +6,8 @@ import Header from "../components/Header";
 import { BsFillFileMusicFill } from "react-icons/bs";
 import { useTypewriter } from "react-simple-typewriter";
 
-function getAudio(audio: any) {
-return `https://me3l9y-8001.preview.csb.app/spotify?url=${audio}`;
+function getAudio(audio: any, title: any) {
+return `https://me3l9y-8001.preview.csb.app/spotify?url=${audio}&title=${title}`;
 }
 
 export default function SPOTIFY() {
@@ -125,7 +125,10 @@ className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-stone-900 borde
 <li tabIndex={0}>
 <a
 className="italic"
-href={getAudio(isSearchData._url)}
+href={getAudio(
+isSearchData._url,
+isSearchData._title
+)}
 >
 best available
 </a>
