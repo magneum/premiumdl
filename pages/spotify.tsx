@@ -25,7 +25,7 @@ export default function SPOTIFY() {
       setSearchData(crons.data);
       setLoading(false);
     } else {
-      router.push("/");
+      router.push("/nSpot");
       setLoading(false);
     }
   };
