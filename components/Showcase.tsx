@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTypewriter } from "react-simple-typewriter";
+import Image from "next/image";
 
 function Showcase() {
 var [Lines] = useTypewriter({
@@ -53,7 +54,7 @@ YouTube Converter
 <hr className="border-yellow-100" />
 </div>
 <div>
-<img
+<Image
 className="object-cover w-full h-56 rounded-xl sm:h-96"
 src="/youtube.gif"
 alt=""
@@ -94,7 +95,7 @@ Spotify Converter
 <hr className="border-yellow-100" />
 </div>
 <div>
-<img
+<Image
 className="object-cover w-full h-56 rounded-xl sm:h-96"
 src="/Spotify.gif"
 alt=""

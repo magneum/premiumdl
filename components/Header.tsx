@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import React, { useState } from "react";
 import { SocialIcon } from "react-social-icons";
 
@@ -14,11 +15,11 @@ var _color = [
 var _colorI = _color[Math.floor(Math.random() * _color.length)];
 return (
 <header className="sticky top-0 p-5 flex items-center justify-center max-w-7xl mx-auto bg-neutral-900 rounded-t rounded-xl">
-<img
+<Image
 className={`h-14 w-full rounded-lg ${_colorI}`}
 alt="hero"
 src="https://music.school/templates/school/images/dist/Sound_wave_preloader.gif"
-></img>
+/>
 <motion.div
 initial={{ x: -200, opacity: 0, scale: 1 }}
 animate={{ x: 0, opacity: 1, scale: 1 }}
