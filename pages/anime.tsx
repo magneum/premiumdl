@@ -3,7 +3,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
-import { BiErrorCircle } from "react-icons/Bi";
 import { SocialIcon } from "react-social-icons";
 import React, { useState, useRef } from "react";
 import { useTypewriter } from "react-simple-typewriter";
@@ -143,7 +142,7 @@ synopsis:{" "}
 <div className="grid gap-8 row-gap-8 sm:grid-cols-2">
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> premiered
+premiered
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._premiered}
@@ -152,7 +151,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> webpage
+webpage
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._webpage}
@@ -161,7 +160,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> broadcast
+broadcast
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._broadcast}
@@ -170,7 +169,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> genres
+genres
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._genres}
@@ -179,7 +178,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> type
+type
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._type}
@@ -188,7 +187,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> episodes
+episodes
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._episodes}
@@ -197,7 +196,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> rating
+rating
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._rating}
@@ -206,7 +205,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> aired
+aired
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._aired}
@@ -215,7 +214,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> score
+score
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._score}
@@ -224,7 +223,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> scores
+scores
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._scores}
@@ -233,7 +232,7 @@ synopsis:{" "}
 
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> favourites
+favourites
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._favourites}
@@ -241,7 +240,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> rank
+rank
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._rank}
@@ -249,7 +248,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> duration
+duration
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._duration}
@@ -257,7 +256,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> studios
+studios
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._studios}
@@ -265,7 +264,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> producers
+producers
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._producers}
@@ -273,7 +272,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> popularity
+popularity
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._popularity}
@@ -281,7 +280,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> members
+members
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._members}
@@ -289,7 +288,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> source
+source
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._source}
@@ -297,7 +296,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> synonyms
+synonyms
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._synonyms}
@@ -305,7 +304,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> characters
+characters
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._characters}
@@ -313,7 +312,7 @@ synopsis:{" "}
 </div>
 <div>
 <h6 className="mb-2 font-semibold leading-5 text-amber-400 uppercase">
-<BiErrorCircle /> staffs
+staffs
 </h6>
 <p className="text-sm text-gray-300 italic">
 {isSearchData._scores}
