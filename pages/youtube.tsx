@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import Header from "../components/Header";
 import { useTypewriter } from "react-simple-typewriter";
 import { BsFillCameraVideoFill, BsFillFileMusicFill } from "react-icons/bs";
+import Image from "next/image";
 
 function getAudio(audio: any, title: any) {
 return `https://me3l9y-3003.preview.csb.app/audio?audio=${audio}&title=${title}`;
@@ -327,7 +328,7 @@ className="flex items-center rounded bg-orange-400 px-6 pt-2.5 pb-2 text-xs font
 )}
 </div>
 <div>
-<img
+<Image
 className="object-cover w-full h-56 rounded-xl sm:h-96 mt-10"
 src={isSearchData.THUMB}
 alt=""
@@ -425,7 +426,7 @@ Search
 </form>
 </div>
 <div>
-<img
+<Image
 className="object-cover w-full h-56 rounded sm:h-96"
 src="https://i.pinimg.com/originals/f8/8a/ca/f88acab7ffd127b4465659500aa0538f.gif"
 alt=""

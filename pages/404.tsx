@@ -34,7 +34,7 @@ animate={{ x: 0, opacity: 1, scale: 1 }}
 transition={{ duration: 1 }}
 >
 <p className="text-2xl md:text-3xl font-light leading-normal mb-8 text-amber-100/70">
-Sorry we couldn't find the page you're looking for
+Sorry we couldn&apos;t find the page you&apos;re looking for
 </p>
 </motion.div>
 

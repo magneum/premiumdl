@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import { useRef, useState, useEffect } from "react";
 import { BsFillFileMusicFill } from "react-icons/bs";
 import { useTypewriter } from "react-simple-typewriter";
+import Image from "next/image";
 
 function getAudio(audio: any, title: any) {
 return `https://me3l9y-3003.preview.csb.app/spotify?url=${audio}&title=${title}`;
@@ -152,7 +153,7 @@ best available
 </div>
 </div>
 <div>
-<img
+<Image
 className="object-cover w-full h-56 rounded-xl sm:h-96 mt-10"
 src={isSearchData._thumbnail}
 alt=""
@@ -249,7 +250,7 @@ Search
 </form>
 </div>
 <div>
-<img
+<Image
 className="object-cover w-full h-56 rounded sm:h-96 hue-rotate-90"
 src="https://i.pinimg.com/originals/f8/8a/ca/f88acab7ffd127b4465659500aa0538f.gif"
 alt=""

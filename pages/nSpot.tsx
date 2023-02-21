@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useTypewriter } from "react-simple-typewriter";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SPOTIFY() {
 var [Lines] = useTypewriter({
@@ -24,13 +25,13 @@ return (
 <p className="text-xl md:text-3xl font-light leading-normal mb-8 text-red-300/80">
 You have selected{" "}
 <span className="italic font-semibold">
-'Spotiify Downloader'.
+&apos;Spotiify Downloader&apos;.
 </span>
 <br></br>
 But provided a non-spotify link or a spotify playlist link which
 is not yet supported.<br></br>
 Please provide spotify{" "}
-<span className="italic font-semibold">'Single Track'</span> link.
+<span className="italic font-semibold">&apos;Single Track&apos;</span> link.
 </p>
 
 <Link
@@ -47,11 +48,11 @@ Back to Spotify
 </Link>
 </div>
 <div className="w-full lg:flex lg:justify-end lg:w-1/2 mx-5 my-12">
-<img
+<Image
 alt="Page not found"
 className="hue-rotate-90 hover:hue-rotate-60"
 src="https://user-images.githubusercontent.com/43953425/166269493-acd08ccb-4df3-4474-95c7-ad1034d3c070.svg"
-></img>
+/>
 </div>
 </div>
 </div>
